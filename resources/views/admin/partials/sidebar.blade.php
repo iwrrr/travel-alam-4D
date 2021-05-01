@@ -31,13 +31,14 @@
         Manajemen
       </li>
 
-      <li class="sidebar-item">
+      <li class="sidebar-item {{ ($currentAdminMenu == 'destinasi') ? 'expand active' : ''}}">
         <a data-target="#destinasi" data-toggle="collapse" class="sidebar-link collapsed">
           <i class="align-middle" data-feather="map"></i> <span class="align-middle">Destinasi</span>
         </a>
         <ul id="destinasi" class="sidebar-dropdown list-unstyled collapse" data-parent="#sidebar">
-          <li class="sidebar-item"><a class="sidebar-link" href="#">Provinsi</a></li>
-          <li class="sidebar-item"><a class="sidebar-link" href="#">Wisata</a></li>
+          <li class="sidebar-item {{ ($currentAdminSubMenu == 'provinsi') ? 'active' : ''}}"><a class="sidebar-link" href="{{ url('admin/destinasi/provinsi') }}">Provinsi</a></li>
+          <li class="sidebar-item {{ ($currentAdminSubMenu == 'wisata') ? 'active' : ''}}"><a class="sidebar-link" href="{{ url('admin/destinasi/wisata') }}">Wisata</a></li>
+          <li class="sidebar-item {{ ($currentAdminSubMenu == 'lokasi') ? 'active' : ''}}"><a class="sidebar-link" href="{{ url('admin/destinasi/lokasi') }}">Lokasi</a></li>
         </ul>
       </li>
 

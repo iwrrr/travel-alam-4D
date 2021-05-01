@@ -31,6 +31,9 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function (
     Route::resource('peralatan/alat', 'AlatController');
 
     // ROUTE DESTINASI
+    Route::resource('destinasi/provinsi', 'ProvinsiController');
+    Route::resource('destinasi/wisata', 'WisataController');
+    Route::resource('destinasi/lokasi', 'LokasiController');
 });
 
 require __DIR__ . '/auth.php';
