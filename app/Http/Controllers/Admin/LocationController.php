@@ -5,15 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class KategoriController extends Controller
+class LocationController extends Controller
 {
 
     public function __construct()
     {
         parent::__construct();
 
-        $this->data['currentAdminMenu'] = 'peralatan';
-        $this->data['currentAdminSubMenu'] = 'kategori';
+        $this->data['currentAdminMenu'] = 'destinasi';
+        $this->data['currentAdminSubMenu'] = 'lokasi';
     }
 
     /**
@@ -23,7 +23,7 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        return view('admin.peralatan.kategori.index', $this->data);
+        return view('admin.destinasi.lokasi.index', $this->data);
     }
 
     /**
