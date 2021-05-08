@@ -10,19 +10,19 @@ class Location extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama',
+        'name',
         'slug',
-        'wisata_id',
-        'provinsi_id'
+        'tour_id',
+        'province_id'
     ];
 
-    public function tours()
+    public function tour()
     {
-        return $this->belongsTo(Tour::class);
+        return $this->belongsTo(Tour::class, 'tour_id');
     }
 
-    public function provinces()
+    public function province()
     {
-        return $this->belongsTo(Province::class);
+        return $this->belongsTo(Province::class, 'province_id');
     }
 }

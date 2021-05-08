@@ -12,43 +12,41 @@
         <div class="card-header">
           <h5 class="card-title" style="font-size: 30px !important; font-weight: bold;">Manajemen Lokasi Wisata</h5>
         </div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th style="width:30%;">Nama</th>
-              <th style="width:25%">Wisata</th>
-              <th style="width:25%">Provinsi</th>
-              <th>Aksi</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{-- @forelse ($tools as $tool)
+        <div class="card-body">
+          @include('admin.partials.flash')
+          <table class="table">
+            <thead>
               <tr>
-                <td>{{ $tool->id }}</td>
-                <td>{{ $tool->name }}</td>
-                <td>{{ $tool->slug }}</td>
-                <td>
-                  <a href="{{ url('admin/tools/' . $tool->id . '/edit') }}"> <i class="align-middle" ></i> Edit</a>
-                    
-                  <form method="post" action="admin/tools/ . {{ $tool->id }}">
-                    <button type="submit"><i class="align-middle" data-feather="trash"></i></button>
-                  </form>
-                </td>
+                <th>#</th>
+                <th style="width:30%;">Nama</th>
+                <th style="width:25%">Wisata</th>
+                <th style="width:25%">Provinsi</th>
+                <th>Aksi</th>
               </tr>
-            @empty
-              <tr>
-                <td colspan="5">Tidak ada data</td>
-              </tr>
-            @endforelse --}}
-            <tr>
-              <td colspan="5" style="text-align: center">Tidak ada data</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="card-footer text-right">
-        <a href="{{ url('admin/peralatan/kategori/create') }}" class="btn btn-primary">Tambah</a>
+            </thead>
+            <tbody>
+              @forelse ($locations as $location)
+                <tr>
+                  <td>{{ $loop->iteration }}</td>
+                  <td>{{ $location->name }}</td>
+                  <td>{{ $location->tour->name }}</td>
+                  <td>{{ $location->province->name }}</td>
+                  <td class="table-action">
+                    <a href="{{ url('admin/destinasi/lokasi/' . $location->id . '/edit') }}"> <i class="align-middle" data-feather="edit-2"></i></a>
+                    <a href="{{ route('admin.lokasi.delete',  $location->id) }}" onclick="return confirm('Apakah anda yakin?')"><i class="align-middle" data-feather="trash"></i></a>
+                  </td>
+                </tr>
+              @empty
+                <tr>
+                  <td colspan="5" style="text-align: center">Tidak ada data</td>
+                </tr>
+              @endforelse
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer text-right">
+          <a href="{{ url('admin/destinasi/lokasi/create') }}" class="btn btn-primary">Tambah</a>
+        </div>
       </div>
     </div>
   </div>

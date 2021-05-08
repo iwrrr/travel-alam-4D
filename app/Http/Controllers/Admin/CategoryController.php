@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Category;
+use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -23,6 +25,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $this->data['categories'] = Category::orderBy('name', 'ASC')->paginate(10);
+
         return view('admin.peralatan.kategori.index', $this->data);
     }
 
@@ -33,7 +37,12 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::orderBy('name', 'ASC')->get();
+
+        $this->data['categories'] = $categories->toArray();
+        $this->data['category'] = null;
+
+        return view('admin.destinasi.kategori.form', $this->data);
     }
 
     /**
@@ -42,9 +51,16 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        $params = $request->except('_token');
+        $params['slug'] = Str::slug($params['name']);
+
+        if (Category::create($params)) {
+            Session::flash('success', 'Provinsi telah ditambahkan');
+        }
+
+        return redirect('admin/destinasi/provinsi');
     }
 
     /**

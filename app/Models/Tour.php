@@ -10,12 +10,12 @@ class Tour extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama',
+        'name',
         'slug'
     ];
 
-    public function locations()
+    public function location()
     {
-        return $this->hasMany(Tour::class);
+        return $this->hasMany(Location::class, 'tour_id');
     }
 }

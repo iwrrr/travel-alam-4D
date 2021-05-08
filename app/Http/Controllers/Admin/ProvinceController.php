@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProvinceRequest;
+use App\Models\Province;
 use Illuminate\Http\Request;
+
+use Str;
+use Session;
 
 class ProvinceController extends Controller
 {
@@ -23,6 +28,8 @@ class ProvinceController extends Controller
      */
     public function index()
     {
+        $this->data['provinces'] = Province::orderBy('name', 'ASC')->paginate(10);
+
         return view('admin.destinasi.provinsi.index', $this->data);
     }
 
@@ -33,7 +40,12 @@ class ProvinceController extends Controller
      */
     public function create()
     {
-        //
+        $provinces = Province::orderBy('name', 'ASC')->get();
+
+        $this->data['provinces'] = $provinces->toArray();
+        $this->data['province'] = null;
+
+        return view('admin.destinasi.provinsi.form', $this->data);
     }
 
     /**
@@ -42,9 +54,16 @@ class ProvinceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProvinceRequest $request)
     {
-        //
+        $params = $request->except('_token');
+        $params['slug'] = Str::slug($params['name']);
+
+        if (Province::create($params)) {
+            Session::flash('success', 'Provinsi telah ditambahkan');
+        }
+
+        return redirect('admin/destinasi/provinsi');
     }
 
     /**
@@ -66,7 +85,11 @@ class ProvinceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $province = Province::findOrFail($id);
+
+        $this->data['province'] = $province;
+
+        return view('admin.destinasi.provinsi.form', $this->data);
     }
 
     /**
@@ -76,9 +99,18 @@ class ProvinceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProvinceRequest $request, $id)
     {
-        //
+        $params = $request->except('_token');
+        $params['slug'] = Str::slug($params['name']);
+
+        $province = Province::findOrFail($id);
+
+        if ($province->update($params)) {
+            Session::flash('success', 'Provinsi telah diperbaharui.');
+        }
+
+        return redirect('admin/destinasi/provinsi');
     }
 
     /**
@@ -89,6 +121,12 @@ class ProvinceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $province = Province::findOrFail($id);
+
+        if ($province->delete()) {
+            Session::flash('success', 'Provinsi berhasil dihapus');
+        }
+
+        return redirect('admin/destinasi/provinsi');
     }
 }

@@ -27,13 +27,23 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function (
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
     // ROUTE PERALATAN
-    Route::resource('peralatan/kategori', 'KategoriController');
-    Route::resource('peralatan/alat', 'AlatController');
+    // KATEGORI
+    Route::resource('peralatan/kategori', 'CategoryController');
+    // ALAT
+    Route::resource('peralatan/alat', 'ToolController');
 
     // ROUTE DESTINASI
-    Route::resource('destinasi/provinsi', 'ProvinsiController');
-    Route::resource('destinasi/wisata', 'WisataController');
-    Route::resource('destinasi/lokasi', 'LokasiController');
+    // PROVINSI
+    Route::resource('destinasi/provinsi', 'ProvinceController');
+    Route::get('destinasi/provinsi/delete/{id}', 'ProvinceController@destroy')->name('admin.provinsi.delete');
+
+    // WISATA
+    Route::resource('destinasi/wisata', 'TourController');
+    Route::get('destinasi/wisata/delete/{id}', 'TourController@destroy')->name('admin.wisata.delete');
+
+    // LOKASI
+    Route::resource('destinasi/lokasi', 'LocationController');
+    Route::get('destinasi/lokasi/delete/{id}', 'LocationController@destroy')->name('admin.lokasi.delete');
 });
 
 require __DIR__ . '/auth.php';

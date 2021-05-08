@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TourRequest;
+use App\Models\Tour;
 use Illuminate\Http\Request;
+
+use Str;
+use Session;
 
 class TourController extends Controller
 {
@@ -23,6 +28,8 @@ class TourController extends Controller
      */
     public function index()
     {
+        $this->data['tours'] = Tour::orderBy('name', 'ASC')->paginate(10);
+
         return view('admin.destinasi.wisata.index', $this->data);
     }
 
@@ -33,7 +40,12 @@ class TourController extends Controller
      */
     public function create()
     {
-        //
+        $tours = Tour::orderBy('name', 'ASC')->get();
+
+        $this->data['tours'] = $tours->toArray();
+        $this->data['tour'] = null;
+
+        return view('admin.destinasi.wisata.form', $this->data);
     }
 
     /**
@@ -42,9 +54,16 @@ class TourController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TourRequest $request)
     {
-        //
+        $params = $request->except('_token');
+        $params['slug'] = Str::slug($params['name']);
+
+        if (Tour::create($params)) {
+            Session::flash('success', 'Wisata telah ditambahkan');
+        }
+
+        return redirect('admin/destinasi/wisata');
     }
 
     /**
@@ -66,7 +85,11 @@ class TourController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tour = Tour::findOrFail($id);
+
+        $this->data['tour'] = $tour;
+
+        return view('admin.destinasi.wisata.form', $this->data);
     }
 
     /**
@@ -76,9 +99,18 @@ class TourController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TourRequest $request, $id)
     {
-        //
+        $params = $request->except('_token');
+        $params['slug'] = Str::slug($params['name']);
+
+        $tour = Tour::findOrFail($id);
+
+        if ($tour->update($params)) {
+            Session::flash('success', 'Wisata telah diperbaharui.');
+        }
+
+        return redirect('admin/destinasi/wisata');
     }
 
     /**
@@ -89,6 +121,12 @@ class TourController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tour = Tour::findOrFail($id);
+
+        if ($tour->delete()) {
+            Session::flash('success', 'Wisata berhasil dihapus');
+        }
+
+        return redirect('admin/destinasi/wisata');
     }
 }

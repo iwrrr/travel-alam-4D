@@ -16,10 +16,10 @@
           <thead>
             <tr>
               <th>#</th>
-              <th style="width:25%;">Nama</th>
-              <th style="width:15%">Slug</th>
-              <th style="width:15%">Kategori</th>
-              <th>Harga</th>
+              <th style="width:35%;">Nama</th>
+              {{-- <th style="width:15%">Slug</th> --}}
+              <th style="width:25%">Kategori</th>
+              <th style="width:20%">Harga</th>
               <th>Aksi</th>
             </tr>
           </thead>
