@@ -21,6 +21,8 @@ class LocationController extends Controller
 
         $this->data['currentAdminMenu'] = 'destinasi';
         $this->data['currentAdminSubMenu'] = 'lokasi';
+
+        $this->data['types'] = Location::types();
     }
 
     /**
@@ -47,8 +49,8 @@ class LocationController extends Controller
     public function create()
     {
         $locations = Location::all();
-        $provinces = Province::pluck('name', 'id');
-        $tours = Tour::pluck('name', 'id');
+        $provinces = Province::pluck('provinsi', 'id');
+        $tours = Tour::pluck('wisata', 'id');
 
         $this->data['locations'] = $locations;
         $this->data['provinces'] = $provinces;
@@ -68,7 +70,7 @@ class LocationController extends Controller
     public function store(LocationRequest $request)
     {
         $params = $request->except('_token');
-        $params['slug'] = Str::slug($params['name']);
+        $params['slug'] = Str::slug($params['lokasi']);
 
         if (Location::create($params)) {
             Session::flash('success', 'Lokasi telah ditambahkan');
@@ -96,7 +98,15 @@ class LocationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $location = Location::findOrFail($id);
+        $provinces = Province::pluck('provinsi', 'id');
+        $tours = Tour::pluck('wisata', 'id');
+
+        $this->data['location'] = $location;
+        $this->data['provinces'] = $provinces;
+        $this->data['tours'] = $tours;
+
+        return view('admin.destinasi.lokasi.form', $this->data);
     }
 
     /**
@@ -106,9 +116,18 @@ class LocationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(LocationRequest $request, $id)
     {
-        //
+        $params = $request->except('_token');
+        $params['slug'] = Str::slug($params['lokasi']);
+
+        $location = Location::findOrFail($id);
+
+        if ($location->update($params)) {
+            Session::flash('success', 'Lokasi telah diperbaharui.');
+        }
+
+        return redirect('admin/destinasi/lokasi');
     }
 
     /**

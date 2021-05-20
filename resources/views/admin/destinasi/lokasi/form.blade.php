@@ -3,7 +3,8 @@
 @section('content')
     
   @php
-      $formTitle = !empty($location) ? 'Update' : 'Tambah'
+      $formTitle = !empty($location) ? 'Ubah' : 'Tambah';
+      $formButton = !empty($location) ? 'Ubah' : 'Tambah';
   @endphp
 
   <div class="content">
@@ -23,36 +24,47 @@
             @endif
 
             <div class="form-group mb-3">
-              {!! Form::label('name', 'Nama Lokasi Wisata', ['class' => 'mb-2']) !!}
-              {!! Form::text('name', null, ['class' => 'form-control form-control-lg', 'placeholder' => 'Masukkan nama lokasi wisata']) !!}
-            </div>
-
-            {{-- <div class="form-group">
-              {!! Form::label('provinsi', 'Provinsi', ['class' => 'mb-2']) !!}
-              {!! Form::select('provinsi_id', $provinces, null, ['class' => 'form-control']) !!}
-            </div> --}}
-            <div class="form-group mb-3">
-              <label for="wisata" class="mb-2">Wisata</label>
-              <select name="tour_id" class="form-control">
-                <option value="">- Pilih Wisata -</option>
-                @foreach ($tours as $tour => $value)
-                  <option value="{{ $tour }}">{{ $value }}</option>
-                @endforeach
-              </select>
+              {!! Form::label('lokasi', 'Nama Lokasi Wisata', ['class' => 'mb-2']) !!}
+              {!! Form::text('lokasi', null, ['class' => 'form-control form-control-lg', 'placeholder' => 'Masukkan nama lokasi wisata']) !!}
             </div>
 
             <div class="form-group mb-3">
-              <label for="provinsi" class="mb-2">Provinsi</label>
-              <select name="province_id" class="form-control">
-                <option value="">- Pilih Provinsi -</option>
-                @foreach ($provinces as $province => $value)
-                  <option value="{{ $province }}">{{ $value }}</option>
-                @endforeach
-              </select>
+              {!! Form::label('wisata_id', 'Wisata', ['class' => 'mb-2']) !!}
+              {!! Form::select('wisata_id', $tours, null, ['class' => 'form-control', 'placeholder' => '- Pilih Wisata -']) !!}
+            </div>
+
+            <div class="form-group mb-3">
+              {!! Form::label('provinsi_id', 'Provinsi', ['class' => 'mb-2']) !!}
+              {!! Form::select('provinsi_id', $provinces, null, ['class' => 'form-control', 'placeholder' => '- Pilih Provinsi -']) !!}
+            </div>
+
+            <div class="form-group mb-3">
+              {!! Form::label('deskripsi', 'Deskripsi', ['class' => 'mb-2']) !!}
+              {!! Form::textarea('deskripsi', null, ['class' => 'form-control']) !!}
+            </div>
+
+            <div class="form-group mb-3">
+              {!! Form::label('jenis', 'Tipe Lokasi', ['class' => 'mb-2']) !!}
+              {!! Form::select('jenis', $types, null, ['class' => 'form-control', 'placeholder' => '- Pilih Tipe -']) !!}
+            </div>
+
+            <div class="form-group mb-3">
+              {!! Form::label('jalur_pendakian', 'Jalur Pendakian', ['class' => 'mb-2']) !!}
+              {!! Form::textarea('jalur_pendakian', null, ['class' => 'form-control']) !!}
+            </div>
+
+            <div class="form-group mb-3">
+              {!! Form::label('rute_termudah', 'Rute Termudah', ['class' => 'mb-2']) !!}
+              {!! Form::textarea('rute_termudah', null, ['class' => 'form-control', 'rows' => '2']) !!}
+            </div>
+
+            <div class="form-group mb-3">
+              {!! Form::label('rute_normal', 'Rute Normal', ['class' => 'mb-2']) !!}
+              {!! Form::textarea('rute_normal', null, ['class' => 'form-control', 'rows' => '2']) !!}
             </div>
             
             <div class="form-footer pt-5">
-              <button type="submit" class="btn btn-primary btn-default float-right">Tambah</button>
+              <button type="submit" class="btn btn-primary btn-default float-right">{{ $formButton }}</button>
               <a href="{{ url('admin/destinasi/lokasi') }}" class="btn btn-secondary">Kembali</a>
             </div>
 
