@@ -32,7 +32,7 @@
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $tool->alat }}</td>
                   <td>{{ $tool->category->kategori }}</td>
-                  <td>{{ $tool->harga }}</td>
+                  <td>{{ number_format($tool->harga) }}</td>
                   <td>{{ $tool->stok }}</td>
                   <td>
                     <a href="{{ url('admin/peralatan/alat/' . $tool->id . '/edit') }}"> <i class="align-middle" data-feather="edit-2"></i></a>
