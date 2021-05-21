@@ -672,7 +672,7 @@ section {
 /*--------------------------------------------------------------
 # Keranjang
 --------------------------------------------------------------*/
-.keranjang .flower3 {
+.keranjang .flower3{
   width: 700px;
   position: absolute;
   top: 180vh;
@@ -682,11 +682,82 @@ section {
   transform: scaleX(-1) rotate(10deg);
 }
 .margin-keranjang {
-  margin-top: 8rem!important;
+  margin-top: 6rem!important;
   margin-bottom: 3rem!important;
 }
 
 .keranjang-header {
+  color: #289D7D;
   text-align: Left;
   padding-bottom: 40px;
+}
+
+.keranjang-line {
+  background: #289D7D;
+  height: 2px;
+  width: 18%;
+}
+
+.prim-color{
+  color: #289D7D;
+}
+
+/*--------------------------------------------------------------
+# Peralatan Hiking
+--------------------------------------------------------------*/
+
+.peralatan .flower3{
+  width: 700px;
+  position: absolute;
+  top: 180vh;
+  right: 15vh;
+  opacity: 0.1;
+  z-index: -1;
+  transform: scaleX(-1) rotate(10deg);
+}
+
+.margin-peralatan {
+  margin-top: 6rem!important;
+  margin-bottom: 3rem!important;
+}
+
+.peralatan-header {
+  color: #289D7D;
+  text-align: Left;
+  padding-bottom: 40px;
+}
+
+.card-peralatan {
+  border-radius: 10px !important;
+  height: 80px;
+  width: 45%;
+  border: none;
+  box-shadow: 4px 6px 5px rgba(0, 0, 0, 0.2);
+}
+
+.card-peralatan-content {
+  padding: 12px 12px;
+}
+
+/*--------------------------------------------------------------
+# Checkout
+--------------------------------------------------------------*/
+
+#body-bg-checkout{
+  background-color: #fdfdfd;
+}
+
+.checkout .flower3{
+  width: 700px;
+  position: absolute;
+  top: 180vh;
+  right: 15vh;
+  opacity: 0.1;
+  z-index: -1;
+  transform: scaleX(-1) rotate(10deg);
+}
+
+.margin-checkout {
+  margin-top: 6rem!important;
+  margin-bottom: 3rem!important;
 }
