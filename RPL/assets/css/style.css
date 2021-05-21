@@ -144,7 +144,7 @@ section {
 }
 
 .header.header-scrolled .navbar a:hover {
-    color: #134b3b;
+    color: #1f8064;
 }
 
 .header.header-scrolled .navbar .signup a {
@@ -210,7 +210,7 @@ section {
 .navbar a:hover,
 .navbar .active,
 .navbar li:hover > a {
-    color: #134b3b;
+    color: #1f8064;
     text-shadow: none;
 }
 
@@ -301,7 +301,7 @@ section {
 
 .navbar a.btn-primary:hover {
     color: #fff;
-    background-color: #134b3b;
+    background-color: #1f8064;
 }
 
 /**
@@ -442,7 +442,7 @@ section {
 .navbar-mobile a:hover,
 .navbar-mobile .active,
 .navbar-mobile li:hover > a {
-    color: #134b3b;
+    color: #1f8064;
 }
 
 .navbar-mobile .dropdown > .dropdown-active {
@@ -640,71 +640,63 @@ section {
 --------------------------------------------------------------*/
 
 .keranjang-line {
-  background: #289D7D;
-  height: 2px;
-  width: 18%;
+    background: #289d7d;
+    height: 2px;
+    width: 12%;
 }
 
-.prim-color{
-  color: #289D7D;
+.prim-color {
+    color: #289d7d;
 }
 
 /*--------------------------------------------------------------
-# Peralatan Hiking
+# Keranjang
 --------------------------------------------------------------*/
 
-.peralatan .flower3{
-  width: 700px;
-  position: absolute;
-  top: 180vh;
-  right: 15vh;
-  opacity: 0.1;
-  z-index: -1;
-  transform: scaleX(-1) rotate(10deg);
+.konfirmasi-line {
+    background: #289d7d;
+    height: 2px;
+    width: 27%;
 }
 
-.margin-peralatan {
-  margin-top: 6rem!important;
-  margin-bottom: 3rem!important;
+/*--------------------------------------------------------------
+# Peralatan
+--------------------------------------------------------------*/
+
+.peralatan {
+    margin-top: 80px;
+    height: max-content;
 }
 
-.peralatan-header {
-  color: #289D7D;
-  text-align: Left;
-  padding-bottom: 40px;
-}
-
-.card-peralatan {
-  border-radius: 10px !important;
-  height: 80px;
-  width: 45%;
-  border: none;
-  box-shadow: 4px 6px 5px rgba(0, 0, 0, 0.2);
-}
-
-.card-peralatan-content {
-  padding: 12px 12px;
+.surfing {
+    height: 800px;
 }
 
 /*--------------------------------------------------------------
 # Checkout
 --------------------------------------------------------------*/
 
-#body-bg-checkout{
-  background-color: #fdfdfd;
+#body-bg-checkout {
+    background-color: #fdfdfd;
 }
 
-.checkout .flower3{
-  width: 700px;
-  position: absolute;
-  top: 180vh;
-  right: 15vh;
-  opacity: 0.1;
-  z-index: -1;
-  transform: scaleX(-1) rotate(10deg);
+.checkout {
+    margin-top: 80px;
 }
 
-.margin-checkout {
-  margin-top: 6rem!important;
-  margin-bottom: 3rem!important;
+.bayar {
+    background-color: #289d7d;
+}
+
+.bayar:hover {
+    background-color: #1f8064;
+}
+
+/*--------------------------------------------------------------
+# Konfirmasi
+--------------------------------------------------------------*/
+
+.konfirmasi {
+    margin-top: 80px;
+    height: 760px;
 }

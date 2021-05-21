@@ -1,5 +1,9 @@
 @extends('travel-alam.layout')
 
+@section('title')
+  Travel Alam
+@endsection
+
 @section('content')
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="hero">

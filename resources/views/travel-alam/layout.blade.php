@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Travel Alam</title>
+  <title>@yield('title')</title>
 
   <!-- Favicons -->
   <link href="{{ asset('travel-alam/assets/img/mountain-nature-logo-design-template-vector-21245349@2x.png') }}" rel="icon">
