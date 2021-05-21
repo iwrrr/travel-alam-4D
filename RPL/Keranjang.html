@@ -34,13 +34,13 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
   
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/Travel Alam@2x.png" class="mx-2">
+        <img src="assets/img/Travel Alam@2x.png" class="mx-2" alt="">
       </a>
   
       <nav id="navbar" class="navbar">
         <ul>
           <li class="dropdown"><a class="nav-link" href="#"><img src="assets/img/Icon awesome-hiking@2x.png"
-                class="mx-2"><span class="wisata">Destinasi Wisata</span><i class="bi bi-chevron-down"></i></a>
+                class="mx-2" alt=""><span class="wisata">Destinasi Wisata</span><i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="pegunungan.html">Pegunungan</a></li>
               <li><a href="pantai.html">Pantai</a></li>
@@ -48,7 +48,7 @@
             </ul>
           </li>
           <li><a class="nav-link" href="peralatan-travel.html"><img src="assets/img/Icon awesome-toolbox@2x.png"
-                class="mx-2"><span class="tools">Peralatan Travel</span></a></li>
+                class="mx-2" alt=""><span class="tools">Peralatan Travel</span></a></li>
           <li><a class="nav-link login" href="#">Login</a></li>
           <li><a class="btn btn-primary" href="#">
               <p>Sign up</p>
@@ -62,84 +62,103 @@
   </header>
   <!-- End Header -->
 
-  <main id="main">
-
   <!-- Keranjang Section -->
   <section id="keranjang" class="keranjang margin-keranjang">
 
     <div class="container">
 
-      <div class="row mb-3">
+      <div class="row mb-2">
         <div class="col-md">
           <header class="keranjang-header">
-            <h3><img src="assets/img/Icon material-shopping-cart-1.png" height="25"> Keranjang </h3>
+            <h3><img src="assets/img/Icon material-shopping-cart-1.png" height="25" alt=""> Keranjang </h3>
+            <div class="keranjang-line"></div>
           </header>
         </div>
       </div>
 
       <div class="row">
-        <div class="col md">
-          <div class="box">
-            <div class="table-responsive">
+        <div class="col-8">
+          <div class="table-responsive">
               <table class="table">
                 <thead>
                   <tr>
-                    <th colspan="2" class="border-top-0">Product</th>
-                    <th class="border-top-0">Quantity</th>
-                    <th class="border-top-0">Unit price</th>
-                    <th class="border-top-0">Discount</th>
-                    <th class="border-top-0">Total</th>
+                    <th colspan="4" class="border-top-0"><h4 class="prim-color">Peralatan Hiking dan Camping</h4></th>
+                    <th class="border-top-0"><h6>Batalkan <input type="image" src="assets/img/Icon metro-cancel.png" height="25" alt="removeall"></h6>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a href="#"><img src="img/detailsquare.jpg" alt="White Blouse Armani" class="img-fluid"></a></td>
-                    <td><a href="#">White Blouse Armani</a></td>
-                    <td>2</td>
-                    <td>$123.00</td>
-                    <td>$0.00</td>
-                    <td>$246.00</td>
+                    <td colspan="2"><img src="assets/img/Sleepingbag.jpg" alt="sleepingbagsm" height="60" width="60"> Sleeping Bag Uk. S dan M</td>
+                    <td><p class="my-3 prim-color">Rp. 12.000,-</p></td>
+                    <td><div class="form-group col-sm-4 my-2">
+                      <input type="number" class="form-control" placeholder="1" min="1">
+                    </div>
+                    </td>
+                    <td><input type="image" class="my-3" src="assets/img/Icon awesome-trash-alt.png" height="25" alt="remove"></td>
                   </tr>
                   <tr>
-                    <td><a href="#"><img src="img/basketsquare.jpg" alt="Black Blouse Armani" class="img-fluid"></a></td>
-                    <td><a href="#">Black Blouse Armani</a></td>
-                    <td>1</td>
-                    <td>$200.00</td>
-                    <td>$0.00</td>
-                    <td>$200.00</td>
+                    <td colspan="2"><img src="assets/img/tenda.png" alt="tenda" height="60" width="60"> Tenda Kapasitas 2-3 Orang</td>
+                    <td><p class="my-3 prim-color">Rp. 35.000,-</p></td>
+                    <td><div class="form-group col-sm-4 my-2">
+                      <input type="number" class="form-control" placeholder="1" min="1">
+                    </div>
+                    </td>
+                    <td><input type="image" class="my-3" src="assets/img/Icon awesome-trash-alt.png" height="25" alt="remove"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><img src="assets/img/tenda.png" alt="tenda" height="60" width="60"> Tenda Kapasitas 4-5 Orang</td>
+                    <td><p class="my-3 prim-color">Rp. 45.000,-</p></td>
+                    <td><div class="form-group col-sm-4 my-2">
+                      <input type="number" class="form-control" placeholder="1" min="1">
+                    </div>
+                    </td>
+                    <td><input type="image" class="my-3" src="assets/img/Icon awesome-trash-alt.png" height="25" alt="remove"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><img src="assets/img/komporr.jpg" alt="kompor" height="60" width="60"> Kompor Portable + Gas</td>
+                    <td><p class="my-3 prim-color">Rp. 30.000,-</p></td>
+                    <td><div class="form-group col-sm-4 my-2">
+                      <input type="number" class="form-control" placeholder="1" min="1">
+                    </div>
+                    </td>
+                    <td><input type="image" class="my-3" src="assets/img/Icon awesome-trash-alt.png" height="25" alt="remove"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><img src="assets/img/tas.jpg" alt="kompor" height="60" width="60"> Tas Carrier 60L</td>
+                    <td><p class="my-3 prim-color">Rp. 35.000,-</p></td>
+                    <td><div class="form-group col-sm-4 my-2">
+                      <input type="number" class="form-control" placeholder="1" min="1">
+                    </div>
+                    </td>
+                    <td><input type="image" class="my-3" src="assets/img/Icon awesome-trash-alt.png" height="25"></td>
                   </tr>
                 </tbody>
                 <tfoot>
-                  <tr>
-                    <th colspan="5" class="text-right">Order subtotal</th>
-                    <th>$446.00</th>
-                  </tr>
-                  <tr>
-                    <th colspan="5" class="text-right">Shipping and handling</th>
-                    <th>$10.00</th>
-                  </tr>
-                  <tr>
-                    <th colspan="5" class="text-right">Tax</th>
-                    <th>$0.00</th>
-                  </tr>
-                  <tr>
-                    <th colspan="5" class="text-right">Total</th>
-                    <th>$456.00</th>
-                  </tr>
                 </tfoot>
               </table>
-            </div>
+          </div>
+          <button type="button" class="btn btn-outline-success my-4"><img src="assets/img/Icon material-navigate-next.png" height="15">
+            Kembali Ke Peralatan</button>
+        </div>
+        
+        <div class="col-4">
+          <div class="card-body border border-secondary rounded">
+            <h5 class="card-title mb-4">Ringkasan Harga Sewa</h5>
+            <table class="table my-4">
+              <tr>
+                <td>Total Harga ( 5 Barang )</td>
+                <td>Rp. 157.000,-</td>
+              </tr>
+            </table>
+            <a href="#" class="btn btn-success my-2 w-100">Bayar Sekarang</a>
           </div>
         </div>
-        </div>
-
       </div>
-
     </div>
 
   </section>
   <!-- End Destinasi Section -->
-</main>
+
    <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
 
@@ -151,9 +170,9 @@
           </div>
           <div class="col-md-6">
             <div class="social-links">
-              <a href="https://www.facebook.com/bemfasilkomusk" target="_blank" class="facebook"><i
+              <a href="#" target="_blank" class="facebook"><i
                   class="bi bi-facebook"></i></a>
-              <a href="https://www.instagram.com/bemfasilkomunsika/" target="_blank" class="instagram"><i
+              <a href="#" target="_blank" class="instagram"><i
                   class="bi bi-instagram bx bxl-instagram"></i></a>
             </div>
           </div>
