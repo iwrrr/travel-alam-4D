@@ -26,15 +26,15 @@ class TourRequest extends FormRequest
         $id = (int) $this->get('id');
 
         if ($this->method() == 'PUT') {
-            $name = 'required|unique:tours,name,' . $id;
+            $wisata = 'required|unique:tours,wisata,' . $id;
             $slug = 'unique:tours,slug,' . $id;
         } else {
-            $name = 'required|unique:tours,name';
+            $wisata = 'required|unique:tours,wisata';
             $slug = 'unique:tours,slug';
         }
 
         return [
-            'name' => $name,
+            'wisata' => $wisata,
             'slug' => $slug
         ];
     }

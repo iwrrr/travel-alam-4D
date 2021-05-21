@@ -26,13 +26,15 @@ class CategoryRequest extends FormRequest
         $id = (int) $this->get('id');
 
         if ($this->method() == 'PUT') {
-            $name = 'required|unique:categories,name,' . $id;
+            $kategori = 'required|unique:categories,kategori,' . $id;
+            $slug = 'unique:categories,slug,' . $id;
         }
 
-        $slug = 'unique:categories, slug' . $id;
+        $kategori = 'required|unique:categories,kategori';
+        $slug = 'unique:categories,slug';
 
         return [
-            'name' => $name,
+            'kategori' => $kategori,
             'slug' => $slug
         ];
     }

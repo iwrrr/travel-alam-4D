@@ -17,8 +17,8 @@
           <table class="table">
             <thead>
               <tr>
-                <th>#</th>
-                <th style="width:35%;">Nama</th>
+                <th style="width:15%;">#</th>
+                <th style="width:35%;">Provinsi</th>
                 <th style="width:30%">Slug</th>
                 <th>Aksi</th>
               </tr>
@@ -27,7 +27,7 @@
               @forelse ($provinces as $province)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
-                  <td>{{ $province->name }}</td>
+                  <td>{{ $province->provinsi }}</td>
                   <td>{{ $province->slug }}</td>
                   <td class="table-action">
                     <a href="{{ url('admin/destinasi/provinsi/' . $province->id . '/edit') }}"> <i class="align-middle" data-feather="edit-2"></i></a>

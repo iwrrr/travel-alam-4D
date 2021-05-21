@@ -29,8 +29,10 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function (
     // ROUTE PERALATAN
     // KATEGORI
     Route::resource('peralatan/kategori', 'CategoryController');
+    Route::get('peralatan/kategori/delete/{id}', 'CategoryController@destroy')->name('admin.kategori.delete');
     // ALAT
     Route::resource('peralatan/alat', 'ToolController');
+    Route::get('peralatan/alat/delete/{id}', 'ToolController@destroy')->name('admin.alat.delete');
 
     // ROUTE DESTINASI
     // PROVINSI

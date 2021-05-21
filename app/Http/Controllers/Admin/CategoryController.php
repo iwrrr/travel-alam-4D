@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Category;
 use App\Http\Requests\CategoryRequest;
+use App\Models\Category;
 use Illuminate\Http\Request;
+
+use Str;
+use Session;
 
 class CategoryController extends Controller
 {
@@ -25,7 +28,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $this->data['categories'] = Category::orderBy('name', 'ASC')->paginate(10);
+        $this->data['categories'] = Category::orderBy('kategori', 'ASC')->paginate(10);
 
         return view('admin.peralatan.kategori.index', $this->data);
     }
@@ -37,12 +40,12 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::orderBy('name', 'ASC')->get();
+        $categories = Category::orderBy('kategori', 'ASC')->get();
 
         $this->data['categories'] = $categories->toArray();
         $this->data['category'] = null;
 
-        return view('admin.destinasi.kategori.form', $this->data);
+        return view('admin.peralatan.kategori.form', $this->data);
     }
 
     /**
@@ -54,13 +57,13 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         $params = $request->except('_token');
-        $params['slug'] = Str::slug($params['name']);
+        $params['slug'] = Str::slug($params['kategori']);
 
         if (Category::create($params)) {
-            Session::flash('success', 'Provinsi telah ditambahkan');
+            Session::flash('success', 'Kategori telah ditambahkan');
         }
 
-        return redirect('admin/destinasi/provinsi');
+        return redirect('admin/peralatan/kategori');
     }
 
     /**
@@ -82,7 +85,11 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        $this->data['category'] = $category;
+
+        return view('admin.peralatan.kategori.form', $this->data);
     }
 
     /**
@@ -92,9 +99,18 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
-        //
+        $params = $request->except('_token');
+        $params['slug'] = Str::slug($params['kategori']);
+
+        $category = Category::findOrFail($id);
+
+        if ($category->update($params)) {
+            Session::flash('success', 'Kategori telah diperbaharui.');
+        }
+
+        return redirect('admin/peralatan/kategori');
     }
 
     /**
@@ -105,6 +121,12 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        if ($category->delete()) {
+            Session::flash('success', 'Kategori berhasil dihapus');
+        }
+
+        return redirect('admin/peralatan/kategori');
     }
 }

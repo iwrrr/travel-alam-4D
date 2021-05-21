@@ -15,12 +15,14 @@ class CreateToolsTable extends Migration
     {
         Schema::create('tools', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->unsignedInteger('category_id');
-            $table->decimal('price', 15, 2);
+            $table->string('alat');
+            $table->string('slug');
+            $table->unsignedBigInteger('kategori_id')->nullable();
+            $table->decimal('harga', 15, 2);
+            $table->integer('stok')->nullable();
             $table->timestamps();
 
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('kategori_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

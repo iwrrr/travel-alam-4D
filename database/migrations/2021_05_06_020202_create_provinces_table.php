@@ -15,7 +15,7 @@ class CreateProvincesTable extends Migration
     {
         Schema::create('provinces', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('provinsi');
             $table->string('slug');
             $table->timestamps();
         });

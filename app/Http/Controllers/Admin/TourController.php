@@ -28,7 +28,7 @@ class TourController extends Controller
      */
     public function index()
     {
-        $this->data['tours'] = Tour::orderBy('name', 'ASC')->paginate(10);
+        $this->data['tours'] = Tour::orderBy('wisata', 'ASC')->paginate(10);
 
         return view('admin.destinasi.wisata.index', $this->data);
     }
@@ -40,7 +40,7 @@ class TourController extends Controller
      */
     public function create()
     {
-        $tours = Tour::orderBy('name', 'ASC')->get();
+        $tours = Tour::orderBy('wisata', 'ASC')->get();
 
         $this->data['tours'] = $tours->toArray();
         $this->data['tour'] = null;
@@ -57,7 +57,7 @@ class TourController extends Controller
     public function store(TourRequest $request)
     {
         $params = $request->except('_token');
-        $params['slug'] = Str::slug($params['name']);
+        $params['slug'] = Str::slug($params['wisata']);
 
         if (Tour::create($params)) {
             Session::flash('success', 'Wisata telah ditambahkan');
@@ -102,7 +102,7 @@ class TourController extends Controller
     public function update(TourRequest $request, $id)
     {
         $params = $request->except('_token');
-        $params['slug'] = Str::slug($params['name']);
+        $params['slug'] = Str::slug($params['wisata']);
 
         $tour = Tour::findOrFail($id);
 

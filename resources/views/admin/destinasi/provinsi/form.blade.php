@@ -24,8 +24,8 @@
             @endif
 
             <div class="form-group mb-3">
-              {!! Form::label('name', 'Nama Provinsi', ['class' => 'mb-2']) !!}
-              {!! Form::text('name', null, ['class' => 'form-control form-control-lg', 'placeholder' => 'Masukkan nama provinsi']) !!}
+              {!! Form::label('provinsi', 'Nama Provinsi', ['class' => 'mb-2']) !!}
+              {!! Form::text('provinsi', null, ['class' => 'form-control form-control-lg', 'placeholder' => 'Masukkan nama provinsi']) !!}
             </div>
             
             <div class="form-footer pt-5">

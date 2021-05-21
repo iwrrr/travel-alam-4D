@@ -3,7 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ToolRequest;
+use App\Models\Category;
+use App\Models\Tool;
 use Illuminate\Http\Request;
+
+use Str;
+use Session;
 
 class ToolController extends Controller
 {
@@ -23,6 +29,8 @@ class ToolController extends Controller
      */
     public function index()
     {
+        $this->data['tools'] = Tool::with('category')->paginate(2);
+
         return view('admin.peralatan.alat.index', $this->data);
     }
 
@@ -33,7 +41,13 @@ class ToolController extends Controller
      */
     public function create()
     {
-        //
+        $tools = Tool::all();
+        $categories = Category::pluck('kategori', 'id');
+
+        $this->data['tools'] = $tools;
+        $this->data['categories'] = $categories;
+
+        return view('admin.peralatan.alat.form', $this->data);
     }
 
     /**
@@ -42,9 +56,16 @@ class ToolController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ToolRequest $request)
     {
-        //
+        $params = $request->except('_token');
+        $params['slug'] = Str::slug($params['alat']);
+
+        if (Tool::create($params)) {
+            Session::flash('success', 'Alat telah ditambahkan');
+        }
+
+        return redirect('admin/peralatan/alat');
     }
 
     /**
@@ -66,7 +87,13 @@ class ToolController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tool = Tool::findOrFail($id);
+        $categories = Category::pluck('kategori', 'id');
+
+        $this->data['tool'] = $tool;
+        $this->data['categories'] = $categories;
+
+        return view('admin.peralatan.alat.form', $this->data);
     }
 
     /**
@@ -76,9 +103,18 @@ class ToolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ToolRequest $request, $id)
     {
-        //
+        $params = $request->except('_token');
+        $params['slug'] = Str::slug($params['alat']);
+
+        $tool = Tool::findOrFail($id);
+
+        if ($tool->update($params)) {
+            Session::flash('success', 'Alat telah diperbaharui');
+        }
+
+        return redirect('admin/peralatan/alat');
     }
 
     /**
@@ -89,6 +125,12 @@ class ToolController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tool = Tool::findOrFail($id);
+
+        if ($tool->delete()) {
+            Session::flash('success', 'Alat berhasil dihapus');
+        }
+
+        return redirect('admin/peralatan/alat');
     }
 }

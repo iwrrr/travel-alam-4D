@@ -17,10 +17,10 @@
           <table class="table">
             <thead>
               <tr>
-                <th>#</th>
-                <th style="width:30%;">Nama</th>
+                <th style="width:15%;">#</th>
+                <th style="width:25%;">Lokasi</th>
                 <th style="width:25%">Wisata</th>
-                <th style="width:25%">Provinsi</th>
+                <th style="width:20%">Provinsi</th>
                 <th>Aksi</th>
               </tr>
             </thead>
@@ -28,9 +28,9 @@
               @forelse ($locations as $location)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
-                  <td>{{ $location->name }}</td>
-                  <td>{{ $location->tour->name }}</td>
-                  <td>{{ $location->province->name }}</td>
+                  <td>{{ $location->lokasi }}</td>
+                  <td>{{ $location->tour->wisata }}</td>
+                  <td>{{ $location->province->provinsi }}</td>
                   <td class="table-action">
                     <a href="{{ url('admin/destinasi/lokasi/' . $location->id . '/edit') }}"> <i class="align-middle" data-feather="edit-2"></i></a>
                     <a href="{{ route('admin.lokasi.delete',  $location->id) }}" onclick="return confirm('Apakah anda yakin?')"><i class="align-middle" data-feather="trash"></i></a>
