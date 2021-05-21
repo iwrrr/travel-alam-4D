@@ -36,7 +36,7 @@
           </div>
         </div>
       </div>
-      <a href="#" class="btn btn-success mt-3">Kembali</a>
+      <a href="#" class="btn btn-secondary mt-3">Kembali</a>
       <a href="#" class="btn btn-secondary mt-3 bayar float-end">Lanjut</a>
     </div>
   </section>
