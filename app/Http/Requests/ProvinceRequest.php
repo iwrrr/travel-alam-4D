@@ -26,15 +26,15 @@ class ProvinceRequest extends FormRequest
         $id = (int) $this->get('id');
 
         if ($this->method() == 'PUT') {
-            $name = 'required|unique:provinces,name,' . $id;
+            $provinsi = 'required|unique:provinces,provinsi,' . $id;
             $slug = 'unique:provinces,slug,' . $id;
         } else {
-            $name = 'required|unique:provinces,name';
+            $provinsi = 'required|unique:provinces,provinsi';
             $slug = 'unique:provinces,slug';
         }
 
         return [
-            'name' => $name,
+            'provinsi' => $provinsi,
             'slug' => $slug
         ];
     }
