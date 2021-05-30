@@ -18,7 +18,7 @@
             <thead>
               <tr>
                 <th style="width:15%;">#</th>
-                <th style="width:40%;">Wisata</th>
+                <th style="width:35%;">Wisata</th>
                 <th style="width:30%">Slug</th>
                 <th>Aksi</th>
               </tr>
@@ -29,7 +29,7 @@
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $tour->wisata }}</td>
                   <td>{{ $tour->slug }}</td>
-                  <td class="table-action">
+                  <td>
                     <a href="{{ url('admin/destinasi/wisata/' . $tour->id . '/edit') }}"> <i class="align-middle" data-feather="edit-2"></i></a>
                     <a href="{{ route('admin.wisata.delete',  $tour->id) }}" onclick="return confirm('Apakah anda yakin?')"><i class="align-middle" data-feather="trash" style="color: red"></i></a>
                   </td>

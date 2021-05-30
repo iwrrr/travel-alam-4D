@@ -1,12 +1,12 @@
 @extends('travel-alam.layout')
 
 @section('title')
-  Peralatan Hiking
+  Travel Alam - Peralatan Hiking
 @endsection
 
 @section('content')
-      <!-- Peralatan Hiking Section -->
-  <section id="peralatan" class="peralatan">
+    <!-- Peralatan Hiking Section -->
+  <section id="peralatan" class="peralatan hiking">
     <div class="container">
       <div class="row mb-5">
         <div class="col-md">
@@ -16,28 +16,42 @@
         </div>
       </div>
 
-      <div class="row g-2">
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-2">
-                  <img src="assets/img/tenda.png" alt="" class="float-left" width="75">
+      @foreach ($tools->chunk(20) as $chunk)
+        <div class="row g-2">
+          @forelse ($chunk as $tool)
+            @if ($tool->category->kategori == 'Hiking dan Camping')
+              <div class="col-md-6">
+                {!! Form::open(['url' => 'keranjang']) !!}
+                {!! Form::hidden('tool_id', $tool->id) !!}
+                <div class="card custom-card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-2">
+                        <img src="{{ asset('storage/' . $tool->toolImages->first()->path) }}" alt="{{ $tool->alat }}" class="float-left custom-img" width="75">
+                      </div>
+                      <div class="col-md mt-2">
+                        <span class="mx-2 prim-color"><strong>{{ $tool->alat }}</strong></span>
+                        <p class="mt-1" style="margin-left: 8px">Rp {{ number_format($tool->harga) }}</p>
+                      </div>
+                      <div class="col-md-2" style="margin-top: 18px">
+                        <input type="number" name="qty" class="form-control" placeholder="1" min="1" value="1">
+                      </div>
+                      <div class="col-md-2 mt-2">
+                        <button type="submit" class="btn float-end m-2"><img src="{{ asset('travel-alam/assets/img/Icon feather-plus-circle.png') }}" height="30"></button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md">
-                  <span class="mx-2 prim-color"><strong>Tenda Kapasitas 2 - 3 Orang</strong></span>
-                  <p style="margin-left: 8px;">Rp </p>
-                </div>
-                <div class="col-md-2 mt-1">
-                  <a href="#" class="btn float-end m-2"><img src="assets/img/Icon feather-plus-circle.png" height="30"></a>
-                </div>
+                {!! Form::close() !!}
               </div>
-            </div>
-          </div>
+            @endif
+          @empty
+            Tidak ada peralatan
+          @endforelse
         </div>
-      </div>
-      <a href="#" class="btn btn-secondary mt-3">Kembali</a>
-      <a href="#" class="btn btn-secondary mt-3 bayar float-end">Lanjut</a>
+      @endforeach
+      <a href="/" class="btn btn-secondary mt-3 btn-custom">Kembali</a>
+      <a href="{{ url('keranjang') }}" class="btn btn-secondary mt-3 btn-custom btn-theme float-end">Keranjang</a>
     </div>
   </section>
   <!-- End Peralatan Hiking Section -->

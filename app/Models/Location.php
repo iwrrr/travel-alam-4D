@@ -31,6 +31,11 @@ class Location extends Model
         return $this->belongsTo(Province::class, 'provinsi_id');
     }
 
+    public function locationImages()
+    {
+        return $this->hasMany(LocationImage::class)->orderBy('id', 'ASC');
+    }
+
     public static function types()
     {
         return [

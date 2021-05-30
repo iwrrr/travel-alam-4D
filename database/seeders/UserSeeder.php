@@ -14,14 +14,32 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $adminUser = [
-            'name' => 'Admin',
-            'email' => 'admin@example.com',
-            'password' => bcrypt('admin')
-        ];
+        // $adminUser = [
+        //     'name' => 'Admin',
+        //     'email' => 'admin@example.com',
+        //     'password' => bcrypt('admin')
+        // ];
 
-        if (!User::where('email', $adminUser['email'])->exists()) {
-            User::create($adminUser);
-        }
+        // if (!User::where('email', $adminUser['email'])->exists()) {
+        //     User::create($adminUser);
+        // }
+
+        $admin = User::create([
+            'name' => 'Admin',
+            'email' => 'admin@travelalam.com',
+            'tel' => '08123456789',
+            'password' => bcrypt('admin'),
+        ]);
+
+        $admin->assignRole('admin');
+
+        $user = User::create([
+            'name' => 'User',
+            'email' => 'user@example.com',
+            'tel' => '08112233445',
+            'password' => bcrypt('user'),
+        ]);
+
+        $user->assignRole('user');
     }
 }

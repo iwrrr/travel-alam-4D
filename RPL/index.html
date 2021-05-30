@@ -43,18 +43,89 @@
             <ul>
               <li><a href="pegunungan.html">Pegunungan</a></li>
               <li><a href="pantai.html">Pantai</a></li>
-              <!-- <li><a href="hutan.html">Hutan</a></li> -->
             </ul>
           </li>
           <li><a class="nav-link" href="peralatan-travel.html"><img src="assets/img/Icon awesome-toolbox@2x.png" class="mx-2"><span class="tools">Peralatan Travel</span></a></li>
-          <li><a class="nav-link login" href="#">Login</a></li>
-          <li><a class="btn btn-primary" href="#"><p>Sign up</p></a></li>
+          <li><a class="nav-link login" data-bs-toggle="modal" data-bs-target="#loginModal" style="cursor: pointer;">Login</a></li>
+          <li><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupModal"><p>Sign up</p></a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
       <!-- End Navbar -->
 
-    </div>
+      <!-- Login Modal -->
+      <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content" style="border-radius: 20px;">
+            <div class="modal-header border-bottom-0">
+              <button type="button" class="btn-close mt-2 float-end" data-bs-dismiss="modal" aria-label="Close" style="margin-right: 0;"></button>
+            </div>
+            <div class="modal-body p-4">
+              <h5 class="modal-title text-center mb-4" id="loginModalLabel" style="margin-top: -50px;">Login</h5>
+              <form>
+                <div class="mb-3">
+                  <div class="row">
+                    <div class="col-md-1 mt-1" style="font-size: 20px; color: grey;">
+                      <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="col-md" style="margin-left: -10px;">
+                      <input type="email" class="form-control" placeholder="Alamat Email">
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <div class="row">
+                    <div class="col-md-1 mt-1" style="font-size: 20px; color: grey;">
+                      <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="col-md" style="margin-left: -10px;">
+                      <input type="password" class="form-control" placeholder="Password">
+                    </div>
+                  </div>
+                </div>
+                <a href="#" class="btn btn-secondary bayar mt-3 d-flex justify-content-center" style="border-radius: 3rem;">Login</a>
+              </form>
+            </div>
+            <div class="modal-footer d-flex justify-content-center border-top-0" style="margin-top: -25px;">
+              <p>Belum punya akun? <a href="#" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign Up</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sign Up Modal -->
+      <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content" style="border-radius: 20px;">
+            <div class="modal-header border-bottom-0">
+              <button type="button" class="btn-close mt-2 float-end" data-bs-dismiss="modal" aria-label="Close" style="margin-right: 0;"></button>
+            </div>
+            <div class="modal-body p-4">
+              <h5 class="modal-title text-center mb-4" id="signupModalLabel" style="margin-top: -50px;">Sign Up</h5>
+              <form>
+                <div class="mb-3">
+                  <label for="nama" class="form-label">Nama Pengguna</label>
+                  <input type="text" class="form-control" id="nama" name="nama">
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email" name="email">
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <div class="mb-3">
+                  <label for="telp" class="form-label">No. Telepon</label>
+                  <input type="text" class="form-control" id="telp" name="telp">
+                </div>
+                <a href="#" class="btn btn-secondary bayar mt-3 d-flex justify-content-center" style="border-radius: 3rem;">Sign Up</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
   </header>
   <!-- End Header -->
 
@@ -155,6 +226,44 @@
     </section>
     <!-- End Destinasi Wisata Section -->
 
+    
+    <a class="cart-btn d-flex align-items-center justify-content-center" style="cursor: pointer;"><i
+        class="fa fa-shopping-cart" data-bs-toggle="modal" data-bs-target="#destinasiModal"></i></a>
+
+    <!-- Modal -->
+    <div class="modal fade" id="destinasiModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-radius: 20px;">
+          <div class="modal-header border-bottom-0">
+            <button type="button" class="btn-close my-1" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body modal-cart">
+            <h5 class="modal-title mb-4 text-center" id="staticBackdropLabel" style="margin-top: -30px;">Pilih Destinasi</h5>
+            <div class="row">
+              
+              <div class="col-md-3">
+                <a href="">
+                  <div class="card modal-destinasi">
+                    <img src="assets/img/pantai.jpg" class="card-img">
+                  </div>
+                </a>
+              </div>
+
+              <div class="col-md-3 offset-3">
+                <a href="">
+                  <div class="card modal-destinasi">
+                    <img src="assets/img/bromo.png" class="card-img">
+                  </div>
+                </a>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   </main>
   <!-- End #main -->
 
@@ -179,9 +288,6 @@
       </div>
   </footer>
   <!-- End Footer -->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>

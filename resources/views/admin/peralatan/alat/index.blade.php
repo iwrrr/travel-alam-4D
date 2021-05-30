@@ -19,10 +19,8 @@
               <tr>
                 <th style="width:10%">#</th>
                 <th style="width:25%;">Nama</th>
-                {{-- <th style="width:20%">Slug</th> --}}
                 <th style="width:25%">Kategori</th>
-                <th style="width:15%">Harga</th>
-                <th style="width:15%">Stok</th>
+                <th style="width:20%">Harga</th>
                 <th>Aksi</th>
               </tr>
             </thead>
@@ -32,8 +30,7 @@
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $tool->alat }}</td>
                   <td>{{ $tool->category->kategori }}</td>
-                  <td>{{ number_format($tool->harga) }}</td>
-                  <td>{{ $tool->stok }}</td>
+                  <td>Rp {{ number_format($tool->harga) }}</td>
                   <td>
                     <a href="{{ url('admin/peralatan/alat/' . $tool->id . '/edit') }}"> <i class="align-middle" data-feather="edit-2"></i></a>
                     <a href="{{ route('admin.alat.delete',  $tool->id) }}" onclick="return confirm('Apakah anda yakin?')"><i class="align-middle" data-feather="trash" style="color: red"></i></a>
@@ -47,8 +44,8 @@
             </tbody>
           </table>
         </div>
-        <div class="card-footer text-right">
-          <a href="{{ url('admin/peralatan/alat/create') }}" class="btn btn-primary">Tambah</a>
+        <div class="card-footer">
+          <a href="{{ url('admin/peralatan/alat/create') }}" class="btn btn-primary float-right">Tambah</a>
         </div>
       </div>
     </div>

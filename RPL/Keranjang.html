@@ -63,7 +63,7 @@
   <!-- End Header -->
 
   <!-- Keranjang Section -->
-  <section id="keranjang" class="keranjang margin-keranjang">
+  <section id="keranjang" class="keranjang">
 
     <div class="container">
 
@@ -76,15 +76,16 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row mt-4">
         <div class="col-8">
-          <div class="table-responsive">
+          <div class="card">
+            <div class="card-body">
               <table class="table">
                 <thead>
-                  <tr>
-                    <th colspan="4" class="border-top-0"><h4 class="prim-color">Peralatan Hiking dan Camping</h4></th>
-                    <th class="border-top-0"><h6>Batalkan <input type="image" src="assets/img/Icon metro-cancel.png" height="25" alt="removeall"></h6>
-                  </tr>
+                  <th colspan="2">Peralatan</th>
+                  <th>Harga</th>
+                  <th>Jumlah</th>
+                  <th><a href="#"><i class="fa fa-sync-alt" style="color: gray;"></i></a></th>
                 </thead>
                 <tbody>
                   <tr>
@@ -94,7 +95,7 @@
                       <input type="number" class="form-control" placeholder="1" min="1">
                     </div>
                     </td>
-                    <td><input type="image" class="my-3" src="assets/img/Icon awesome-trash-alt.png" height="25" alt="remove"></td>
+                    <td><a href=""><i class="fa fa-trash mt-4" style="color: gray;"></i></a></td>
                   </tr>
                   <tr>
                     <td colspan="2"><img src="assets/img/tenda.png" alt="tenda" height="60" width="60"> Tenda Kapasitas 2-3 Orang</td>
@@ -103,7 +104,7 @@
                       <input type="number" class="form-control" placeholder="1" min="1">
                     </div>
                     </td>
-                    <td><input type="image" class="my-3" src="assets/img/Icon awesome-trash-alt.png" height="25" alt="remove"></td>
+                    <td><a href=""><i class="fa fa-trash mt-4" style="color: gray;"></i></a></td>
                   </tr>
                   <tr>
                     <td colspan="2"><img src="assets/img/tenda.png" alt="tenda" height="60" width="60"> Tenda Kapasitas 4-5 Orang</td>
@@ -112,7 +113,7 @@
                       <input type="number" class="form-control" placeholder="1" min="1">
                     </div>
                     </td>
-                    <td><input type="image" class="my-3" src="assets/img/Icon awesome-trash-alt.png" height="25" alt="remove"></td>
+                    <td><a href=""><i class="fa fa-trash mt-4" style="color: gray;"></i></a></td>
                   </tr>
                   <tr>
                     <td colspan="2"><img src="assets/img/komporr.jpg" alt="kompor" height="60" width="60"> Kompor Portable + Gas</td>
@@ -121,7 +122,7 @@
                       <input type="number" class="form-control" placeholder="1" min="1">
                     </div>
                     </td>
-                    <td><input type="image" class="my-3" src="assets/img/Icon awesome-trash-alt.png" height="25" alt="remove"></td>
+                    <td><a href=""><i class="fa fa-trash mt-4" style="color: gray;"></i></a></td>
                   </tr>
                   <tr>
                     <td colspan="2"><img src="assets/img/tas.jpg" alt="kompor" height="60" width="60"> Tas Carrier 60L</td>
@@ -130,27 +131,31 @@
                       <input type="number" class="form-control" placeholder="1" min="1">
                     </div>
                     </td>
-                    <td><input type="image" class="my-3" src="assets/img/Icon awesome-trash-alt.png" height="25"></td>
+                    <td><a href=""><i class="fa fa-trash mt-4" style="color: gray;"></i></a></td>
                   </tr>
                 </tbody>
                 <tfoot>
                 </tfoot>
               </table>
+            </div>
           </div>
-          <button type="button" class="btn btn-outline-success my-4"><img src="assets/img/Icon material-navigate-next.png" height="15">
-            Kembali Ke Peralatan</button>
+          <a href="" class="btn btn-secondary mt-3"><i class="fa fa-arrow-left"></i> Kembali Ke Peralatan</a>
+          <!-- <button type="button" class="btn btn-outline-success my-4"><img src="assets/img/Icon material-navigate-next.png" height="15">
+            Kembali Ke Peralatan</button> -->
         </div>
         
         <div class="col-4">
-          <div class="card-body border border-secondary rounded">
-            <h5 class="card-title mb-4">Ringkasan Harga Sewa</h5>
-            <table class="table my-4">
-              <tr>
-                <td>Total Harga ( 5 Barang )</td>
-                <td>Rp. 157.000,-</td>
-              </tr>
-            </table>
-            <a href="#" class="btn btn-success my-2 w-100">Bayar Sekarang</a>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title mb-4">Ringkasan Harga Sewa</h5>
+              <table class="table my-4">
+                <tr>
+                  <td>Total Harga</td>
+                  <td>Rp. 157.000,-</td>
+                </tr>
+              </table>
+              <a href="#" class="btn btn-success my-2 w-100 bayar">Lanjut ke halaman checkout</a>
+            </div>
           </div>
         </div>
       </div>

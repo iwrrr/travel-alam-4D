@@ -1,6 +1,6 @@
 <nav id="sidebar" class="sidebar">
   <div class="sidebar-content js-simplebar">
-    <a class="sidebar-brand" href="{{ url('admin/dashboard') }}">
+    <a class="sidebar-brand" href="/">
       <span class="align-middle">Travel Alam</span>
     </a>
 

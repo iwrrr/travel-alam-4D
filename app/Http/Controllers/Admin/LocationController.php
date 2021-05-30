@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LocationImageRequest;
 use App\Http\Requests\LocationRequest;
 use App\Models\Location;
+use App\Models\LocationImage;
 use App\Models\Province;
 use App\Models\Tour;
 use Illuminate\Http\Request;
@@ -53,6 +55,7 @@ class LocationController extends Controller
         $tours = Tour::pluck('wisata', 'id');
 
         $this->data['locations'] = $locations;
+        $this->data['locationID'] = 0;
         $this->data['provinces'] = $provinces;
         $this->data['tours'] = $tours;
 
@@ -103,6 +106,7 @@ class LocationController extends Controller
         $tours = Tour::pluck('wisata', 'id');
 
         $this->data['location'] = $location;
+        $this->data['locationID'] = $location->id;
         $this->data['provinces'] = $provinces;
         $this->data['tours'] = $tours;
 
@@ -145,5 +149,64 @@ class LocationController extends Controller
         }
 
         return redirect('admin/destinasi/lokasi');
+    }
+
+    public function images($id)
+    {
+        $location = Location::findOrFail($id);
+
+        $this->data['locationID'] = $location->id;
+        $this->data['locationImages'] = $location->locationImages;
+
+        return view('admin.destinasi.lokasi.images', $this->data);
+    }
+
+    public function add_image($id)
+    {
+
+        $location = Location::findOrFail($id);
+
+        $this->data['locationID'] = $location->id;
+        $this->data['location'] = $location;
+
+        return view('admin.destinasi.lokasi.image_form', $this->data);
+    }
+
+    public function upload_image(LocationImageRequest $request, $id)
+    {
+        $location = Location::findOrFail($id);
+
+        if ($request->has('image')) {
+            $image = $request->file('image');
+            $name = $location->slug . '_' . time();
+            $fileName = $name . '.' . $image->getClientOriginalExtension();
+
+            $folder = '/uploads/locations/images';
+            $filePath = $image->storeAs($folder, $fileName, 'public');
+
+            $params = [
+                'location_id' => $location->id,
+                'path' => $filePath,
+            ];
+
+            if (LocationImage::create($params)) {
+                Session::flash('success', 'Gambar berhasil diunggah');
+            } else {
+                Session::flash('error', 'Gambar gagal diunggah');
+            }
+
+            return redirect('admin/destinasi/lokasi/' . $id . '/gambar');
+        }
+    }
+
+    public function remove_image($id)
+    {
+        $image = LocationImage::findOrFail($id);
+
+        if ($image->delete()) {
+            Session::flash('success', 'Gambar telah dihapus');
+        }
+
+        return redirect('admin/destinasi/lokasi/' . $image->location->id . '/gambar');
     }
 }

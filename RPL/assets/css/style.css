@@ -71,35 +71,72 @@ section {
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
-.back-to-top {
+/* .back-to-top {
     position: fixed;
     visibility: hidden;
     opacity: 0;
     right: 15px;
     bottom: 15px;
     z-index: 1;
-    background: #4154f1;
-    width: 40px;
-    height: 40px;
-    border-radius: 4px;
+    background: #ffffff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
     transition: all 0.4s;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .back-to-top i {
     font-size: 24px;
-    color: #fff;
+    color: #289d7d;
     line-height: 0;
 }
 
 .back-to-top:hover {
-    background: #6776f4;
-    color: #fff;
+    background: #ddd;
+    color: #289d7d;
 }
 
 .back-to-top.active {
     visibility: visible;
     opacity: 1;
+} */
+
+/*--------------------------------------------------------------
+# Cart button
+--------------------------------------------------------------*/
+.cart-btn {
+    position: fixed;
+    visibility: visible;
+    opacity: 1;
+    right: 15px;
+    bottom: 15px;
+    z-index: 1;
+    background: #ffffff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    transition: all 0.4s;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+    outline: none;
+    border: none;
 }
+
+.cart-btn i {
+    font-size: 24px;
+    color: #289d7d;
+    line-height: 0;
+}
+
+.cart-btn:hover {
+    background: #ddd;
+    color: #289d7d;
+}
+
+/* .cart-btn.active {
+    visibility: visible;
+    opacity: 1;
+} */
 
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
@@ -586,7 +623,7 @@ section {
 /*--------------------------------------------------------------
 # Tentang Kami
 --------------------------------------------------------------*/
-.tentang-kami .flower3 {
+/* .tentang-kami .flower3 {
     width: 700px;
     position: absolute;
     top: 180vh;
@@ -594,7 +631,7 @@ section {
     opacity: 0.1;
     z-index: -1;
     transform: scaleX(-1) rotate(10deg);
-}
+} */
 
 .tentang-kami {
     margin-top: -100px;
@@ -642,22 +679,24 @@ section {
 .keranjang-line {
     background: #289d7d;
     height: 2px;
-    width: 12%;
+    width: 13%;
 }
 
 .prim-color {
     color: #289d7d;
 }
 
-/*--------------------------------------------------------------
-# Keranjang
---------------------------------------------------------------*/
-
 .konfirmasi-line {
     background: #289d7d;
     height: 2px;
     width: 27%;
 }
+
+.keranjang {
+    margin-top: 80px;
+    height: 800px;
+}
+
 
 /*--------------------------------------------------------------
 # Peralatan
@@ -692,6 +731,12 @@ section {
     background-color: #1f8064;
 }
 
+.checkout-line {
+    background: #289d7d;
+    height: 2px;
+    width: 12%;
+}
+
 /*--------------------------------------------------------------
 # Konfirmasi
 --------------------------------------------------------------*/
@@ -699,4 +744,31 @@ section {
 .konfirmasi {
     margin-top: 80px;
     height: 760px;
+}
+
+/*--------------------------------------------------------------
+# Modal
+--------------------------------------------------------------*/
+
+.card.modal-destinasi {
+    height: 280px;
+    width: 220px;
+    border-radius: 10px;
+}
+
+.card.modal-destinasi .card-img {
+    height: 280px;
+    width: 220px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+/*--------------------------------------------------------------
+# Login / Sign Up
+--------------------------------------------------------------*/
+#loginModal .form-control,
+#signupModal .form-control {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0 !important;
 }

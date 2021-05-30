@@ -19,7 +19,6 @@ class CreateToolsTable extends Migration
             $table->string('slug');
             $table->unsignedBigInteger('kategori_id')->nullable();
             $table->decimal('harga', 15, 2);
-            $table->integer('stok')->nullable();
             $table->timestamps();
 
             $table->foreign('kategori_id')->references('id')->on('categories')->onDelete('cascade');

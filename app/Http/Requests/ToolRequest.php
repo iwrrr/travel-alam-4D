@@ -32,12 +32,10 @@ class ToolRequest extends FormRequest
             $slug = 'unique:tools,slug,' . $id;
             $kategori = 'required:tools,kategori_id,' . $kategori_id;
             $harga .= '|required';
-            $stok = 'required';
         } else {
             $alat = 'required|unique:tools,alat';
             $slug = 'unique:tools,slug';
             $kategori = 'required:tools,kategori_id';
-            $stok = 'required';
         }
 
         return [
@@ -45,7 +43,6 @@ class ToolRequest extends FormRequest
             'slug' => $slug,
             'kategori_id' => $kategori,
             'harga' => $harga,
-            'stok' => $stok,
         ];
     }
 }

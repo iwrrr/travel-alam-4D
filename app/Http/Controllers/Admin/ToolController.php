@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ToolImageRequest;
 use App\Http\Requests\ToolRequest;
 use App\Models\Category;
 use App\Models\Tool;
+use App\Models\ToolImage;
 use Illuminate\Http\Request;
 
 use Str;
@@ -29,7 +31,7 @@ class ToolController extends Controller
      */
     public function index()
     {
-        $this->data['tools'] = Tool::with('category')->paginate(2);
+        $this->data['tools'] = Tool::all();
 
         return view('admin.peralatan.alat.index', $this->data);
     }
@@ -45,6 +47,7 @@ class ToolController extends Controller
         $categories = Category::pluck('kategori', 'id');
 
         $this->data['tools'] = $tools;
+        $this->data['toolID'] = 0;
         $this->data['categories'] = $categories;
 
         return view('admin.peralatan.alat.form', $this->data);
@@ -91,6 +94,7 @@ class ToolController extends Controller
         $categories = Category::pluck('kategori', 'id');
 
         $this->data['tool'] = $tool;
+        $this->data['toolID'] = $tool->id;
         $this->data['categories'] = $categories;
 
         return view('admin.peralatan.alat.form', $this->data);
@@ -132,5 +136,63 @@ class ToolController extends Controller
         }
 
         return redirect('admin/peralatan/alat');
+    }
+
+    public function images($id)
+    {
+        $tool = Tool::findOrFail($id);
+
+        $this->data['toolID'] = $tool->id;
+        $this->data['toolImages'] = $tool->toolImages;
+
+        return view('admin.peralatan.alat.images', $this->data);
+    }
+
+    public function add_image($id)
+    {
+        $tool = Tool::findOrFail($id);
+
+        $this->data['toolID'] = $tool->id;
+        $this->data['tool'] = $tool;
+
+        return view('admin.peralatan.alat.image_form', $this->data);
+    }
+
+    public function upload_image(ToolImageRequest $request, $id)
+    {
+        $tool = Tool::findOrFail($id);
+
+        if ($request->has('image')) {
+            $image = $request->file('image');
+            $name = $tool->slug . '_' . time();
+            $fileName = $name . '.' . $image->getClientOriginalExtension();
+
+            $folder = '/uploads/tools/images';
+            $filePath = $image->storeAs($folder, $fileName, 'public');
+
+            $params = [
+                'tool_id' => $tool->id,
+                'path' => $filePath,
+            ];
+
+            if (ToolImage::create($params)) {
+                Session::flash('success', 'Gambar berhasil diunggah');
+            } else {
+                Session::flash('error', 'Gambar gagal diunggah');
+            }
+
+            return redirect('admin/peralatan/alat/' . $id . '/gambar');
+        }
+    }
+
+    public function remove_image($id)
+    {
+        $image = toolImage::findOrFail($id);
+
+        if ($image->delete()) {
+            Session::flash('success', 'Gambar telah dihapus');
+        }
+
+        return redirect('admin/peralatan/alat/' . $image->tool->id . '/gambar');
     }
 }

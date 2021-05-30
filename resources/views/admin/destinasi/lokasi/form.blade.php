@@ -10,7 +10,7 @@
   <div class="content">
     <div class="row">
       <div class="col-lg-6">
-        <div class="card card-default">
+        <div class="card pt-2">
           <div class="card-header card-header-border-bottom">
             <h2>{{ $formTitle }} Lokasi</h2>
           </div>
@@ -63,7 +63,7 @@
               {!! Form::textarea('rute_normal', null, ['class' => 'form-control', 'rows' => '2']) !!}
             </div>
             
-            <div class="form-footer pt-5">
+            <div class="form-footer mt-5">
               <button type="submit" class="btn btn-primary btn-default float-right">{{ $formButton }}</button>
               <a href="{{ url('admin/destinasi/lokasi') }}" class="btn btn-secondary">Kembali</a>
             </div>
@@ -72,7 +72,17 @@
           </div>
         </div>
       </div>
+
+      <div class="col-lg-2">
+        
+        @if (!empty($location))  
+          @include('admin.destinasi.lokasi.menu')
+        @endif
+
+      </div>
+      
     </div>
+    
   </div>
 
 @endsection

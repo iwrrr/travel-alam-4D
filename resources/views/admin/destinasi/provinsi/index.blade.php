@@ -29,7 +29,7 @@
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $province->provinsi }}</td>
                   <td>{{ $province->slug }}</td>
-                  <td class="table-action">
+                  <td>
                     <a href="{{ url('admin/destinasi/provinsi/' . $province->id . '/edit') }}"> <i class="align-middle" data-feather="edit-2"></i></a>
                     <a href="{{ route('admin.provinsi.delete',  $province->id) }}" onclick="return confirm('Apakah anda yakin?')"><i class="align-middle" data-feather="trash" style="color: red"></i></a>
                   </td>

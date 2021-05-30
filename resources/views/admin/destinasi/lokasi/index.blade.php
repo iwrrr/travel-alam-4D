@@ -31,9 +31,9 @@
                   <td>{{ $location->lokasi }}</td>
                   <td>{{ $location->tour->wisata }}</td>
                   <td>{{ $location->province->provinsi }}</td>
-                  <td class="table-action">
+                  <td>
                     <a href="{{ url('admin/destinasi/lokasi/' . $location->id . '/edit') }}"> <i class="align-middle" data-feather="edit-2"></i></a>
-                    <a href="{{ route('admin.lokasi.delete',  $location->id) }}" onclick="return confirm('Apakah anda yakin?')"><i class="align-middle" data-feather="trash"></i></a>
+                    <a href="{{ route('admin.lokasi.delete',  $location->id) }}" onclick="return confirm('Apakah anda yakin?')"><i class="align-middle" data-feather="trash" style="color: red"></i></a>
                   </td>
                 </tr>
               @empty

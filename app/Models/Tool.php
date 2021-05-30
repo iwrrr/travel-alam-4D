@@ -14,11 +14,15 @@ class Tool extends Model
         'slug',
         'kategori_id',
         'harga',
-        'stok'
     ];
 
     public function category()
     {
         return $this->belongsTo(Category::class, 'kategori_id');
+    }
+
+    public function toolImages()
+    {
+        return $this->hasMany('App\Models\ToolImage')->orderBy('id', 'DESC');
     }
 }
