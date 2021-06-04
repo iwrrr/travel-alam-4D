@@ -50,18 +50,18 @@
           </div>
         </div>
 
-        <div class="row gy-5 justify-content-center">
+        <div class="row justify-content-center">
 
-          <div class="col-md-3 d-flex justify-content-center">
+          {{-- <div class="col-md-3 d-flex justify-content-center">
             <a href="">
               <div class="card destinasi">
                 <img src="{{ asset('travel-alam/assets/img/pantai@2x.png') }}" class="icon" width="100">
                 <img src="{{ asset('travel-alam/assets/img/pantai.jpg') }}" class="card-img">
               </div>
             </a>
-          </div>
+          </div> --}}
 
-          <div class="col-md-3 d-flex justify-content-center">
+          <div class="col-md d-flex justify-content-center">
             <a href="">
               <div class="card destinasi">
                 <img src="{{ asset('travel-alam/assets/img/gunung@2x.png') }}" class="icon" width="100">
@@ -104,42 +104,9 @@
     <!-- End Destinasi Wisata Section -->
 
     
-    <a class="cart-btn d-flex align-items-center justify-content-center" style="cursor: pointer;"><i
-        class="fa fa-shopping-cart" data-bs-toggle="modal" data-bs-target="{{ Auth::check() ? '#destinasiModal' : '#loginModal' }}"></i></a>
-
-    <!-- Modal -->
-    <div class="modal fade" id="destinasiModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="destinasiModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content" style="border-radius: 20px;">
-          <div class="modal-header border-bottom-0">
-            <button type="button" class="btn-close my-1" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body modal-cart">
-            <h5 class="modal-title mb-4 text-center" id="staticBackdropLabel" style="margin-top: -30px;">Pilih Destinasi</h5>
-            <div class="row">
-              
-              <div class="col-md-3">
-                <a href="{{ route('peralatan-surfing') }}">
-                  <div class="card modal-destinasi">
-                    <img src="{{ asset('travel-alam/assets/img/pantai.jpg') }}" class="card-img">
-                  </div>
-                </a>
-              </div>
-
-              <div class="col-md-3 offset-3">
-                <a href="{{ route('peralatan-hiking') }}">
-                  <div class="card modal-destinasi">
-                    <img src="{{ asset('travel-alam/assets/img/bromo.png') }}" class="card-img">
-                  </div>
-                </a>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <a href="{{ route('peralatan') }}" class="cart-btn d-flex align-items-center justify-content-center" style="cursor: pointer;"><i
+        class="fa fa-shopping-cart"></i></a>
+        
   </main>
   <!-- End #main -->
   

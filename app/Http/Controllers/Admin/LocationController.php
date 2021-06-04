@@ -8,7 +8,6 @@ use App\Http\Requests\LocationRequest;
 use App\Models\Location;
 use App\Models\LocationImage;
 use App\Models\Province;
-use App\Models\Tour;
 use Illuminate\Http\Request;
 
 use Str;
@@ -23,8 +22,6 @@ class LocationController extends Controller
 
         $this->data['currentAdminMenu'] = 'destinasi';
         $this->data['currentAdminSubMenu'] = 'lokasi';
-
-        $this->data['types'] = Location::types();
     }
 
     /**
@@ -34,7 +31,7 @@ class LocationController extends Controller
      */
     public function index()
     {
-        $locations = Location::with('tour', 'province')->paginate(2);
+        $locations = Location::with('province')->paginate(10);
 
         $this->data['locations'] = $locations;
 
@@ -51,13 +48,11 @@ class LocationController extends Controller
     public function create()
     {
         $locations = Location::all();
-        $provinces = Province::pluck('provinsi', 'id');
-        $tours = Tour::pluck('wisata', 'id');
+        $provinces = Province::pluck('nama_provinsi', 'id');
 
         $this->data['locations'] = $locations;
         $this->data['locationID'] = 0;
         $this->data['provinces'] = $provinces;
-        $this->data['tours'] = $tours;
 
         // dd($this->data);
 
@@ -73,7 +68,7 @@ class LocationController extends Controller
     public function store(LocationRequest $request)
     {
         $params = $request->except('_token');
-        $params['slug'] = Str::slug($params['lokasi']);
+        $params['slug'] = Str::slug($params['nama_lokasi']);
 
         if (Location::create($params)) {
             Session::flash('success', 'Lokasi telah ditambahkan');
@@ -102,13 +97,11 @@ class LocationController extends Controller
     public function edit($id)
     {
         $location = Location::findOrFail($id);
-        $provinces = Province::pluck('provinsi', 'id');
-        $tours = Tour::pluck('wisata', 'id');
+        $provinces = Province::pluck('nama_provinsi', 'id');
 
         $this->data['location'] = $location;
         $this->data['locationID'] = $location->id;
         $this->data['provinces'] = $provinces;
-        $this->data['tours'] = $tours;
 
         return view('admin.destinasi.lokasi.form', $this->data);
     }
@@ -123,7 +116,7 @@ class LocationController extends Controller
     public function update(LocationRequest $request, $id)
     {
         $params = $request->except('_token');
-        $params['slug'] = Str::slug($params['lokasi']);
+        $params['slug'] = Str::slug($params['nama_lokasi']);
 
         $location = Location::findOrFail($id);
 
@@ -185,7 +178,7 @@ class LocationController extends Controller
             $filePath = $image->storeAs($folder, $fileName, 'public');
 
             $params = [
-                'location_id' => $location->id,
+                'id_lokasi' => $location->id,
                 'path' => $filePath,
             ];
 

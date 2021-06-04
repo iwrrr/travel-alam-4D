@@ -29,10 +29,6 @@ Route::prefix('admin')->namespace('Admin')->middleware('role:admin')->group(func
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
     // ROUTE PERALATAN
-    // KATEGORI
-    Route::resource('peralatan/kategori', 'CategoryController');
-    Route::get('peralatan/kategori/{id}/delete', 'CategoryController@destroy')->name('admin.kategori.delete');
-
     // ALAT
     Route::resource('peralatan/alat', 'ToolController');
     Route::get('peralatan/alat/{id}/delete', 'ToolController@destroy')->name('admin.alat.delete');
@@ -46,10 +42,6 @@ Route::prefix('admin')->namespace('Admin')->middleware('role:admin')->group(func
     Route::resource('destinasi/provinsi', 'ProvinceController');
     Route::get('destinasi/provinsi/{id}/delete', 'ProvinceController@destroy')->name('admin.provinsi.delete');
 
-    // WISATA
-    Route::resource('destinasi/wisata', 'TourController');
-    Route::get('destinasi/wisata/{id}/delete', 'TourController@destroy')->name('admin.wisata.delete');
-
     // LOKASI
     Route::resource('destinasi/lokasi', 'LocationController');
     Route::get('destinasi/lokasi/{id}/delete', 'LocationController@destroy')->name('admin.lokasi.delete');
@@ -59,17 +51,26 @@ Route::prefix('admin')->namespace('Admin')->middleware('role:admin')->group(func
     Route::delete('destinasi/lokasi/gambar/{imageID}', 'LocationController@remove_image')->name('admin.lokasi.remove_image');
 });
 
+// PERALATAN HIKING
+Route::get('peralatan', 'HikingController@index')->name('peralatan');
+// KERANJANG
+Route::resource('keranjang', 'CartController');
+Route::get('keranjang/{cartID}/delete', 'CartController@destroy');
+Route::post('keranjang/update', 'CartController@update');
+
 Route::middleware('auth')->group(function () {
-    // PERALATAN HIKING
-    Route::get('peralatan-hiking', 'HikingController@index')->name('peralatan-hiking');
 
-    // PERALATAN SURFING
-    Route::get('peralatan-surfing', 'SurfingController@index')->name('peralatan-surfing');
+    // ORDER
+    Route::get('pesanan/checkout', 'OrderController@checkout');
+    Route::post('pesanan/checkout', 'OrderController@doCheckout');
+    Route::get('pesanan/diterima/{orderID}', 'OrderController@received');
+    Route::get('fetch', 'OrderController@fetch');
 
-    // KERANJANG
-    Route::resource('keranjang', 'CartController');
-    Route::get('keranjang/{cartID}/delete', 'CartController@destroy');
-    Route::get('keranjang/update', 'CartController@update');
+    // PEMBAYARAN
+    Route::post('pembayaran/notifikasi', 'PaymentController@notification');
+    Route::get('pembayaran/selesai', 'PaymentController@completed');
+    Route::get('pembayaran/gagal', 'PaymentController@failed');
+    Route::get('pembayaran/belum-selesai', 'PaymentController@unfinish');
 });
 
 require __DIR__ . '/auth.php';

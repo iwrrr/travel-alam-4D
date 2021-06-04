@@ -11,13 +11,12 @@
           <li class="dropdown"><a class="nav-link" href="#"><img src="{{ asset('travel-alam/assets/img/Icon awesome-hiking@2x.png') }}" class="mx-2"><span class="wisata">Destinasi Wisata</span><i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="pegunungan.html">Pegunungan</a></li>
-              <li><a href="pantai.html">Pantai</a></li>
             </ul>
           </li>
           {{-- <li><a class="nav-link" href="peralatan-travel.html"><img src="{{ asset('travel-alam/assets/img/Icon awesome-toolbox@2x.png') }}" class="mx-2"><span class="tools">Peralatan Travel</span></a></li> --}}
           @if (Route::has('login'))
             @auth
-              <li class="dropdown"><a class="nav-link" href="#"><i class="fa fa-user-circle mx-2" style="font-size: 1.5rem"></i><span>{{ Auth::user()->name }}</span><i class="bi bi-chevron-down"></i></a>
+              <li class="dropdown"><a class="nav-link" href="#"><i class="fa fa-user-circle mx-2" style="font-size: 1.5rem"></i><span>{{ Auth::user()->nama_depan }} {{ Auth::user()->nama_belakang }}</span><i class="bi bi-chevron-down"></i></a>
                 <ul>
                   @role('admin')
                     <li><a href="{{ route('logout') }}" class="nav-link login">Log out</a></li>
@@ -94,8 +93,12 @@
               <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="mb-3">
-                  <label for="name" class="form-label">Nama Pengguna</label>
-                  <input type="text" class="form-control" id="name" name="name" required>
+                  <label for="name" class="form-label">Nama Depan</label>
+                  <input type="text" class="form-control" id="name" name="nama_depan" required>
+                </div>
+                <div class="mb-3">
+                  <label for="name" class="form-label">Nama Belakang</label>
+                  <input type="text" class="form-control" id="name" name="nama_belakang" required>
                 </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
@@ -103,7 +106,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="tel" class="form-label">No. Telepon</label>
-                  <input type="text" class="form-control" id="tel" name="tel" required>
+                  <input type="text" class="form-control" id="tel" name="no_telepon" required>
                 </div>
                 <div class="mb-3">
                   <label for="password" class="form-label">Kata Sandi</label>
@@ -113,8 +116,44 @@
                   <label for="password_confirmation" class="form-label">Konfirmasi Kata Sandi</label>
                   <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
                 </div>
-                <button type="submit" class="btn btn-secondary bayar mt-3 w-100" style="border-radius: 3rem;">Sign Up</button>
+                <div class="mb-3">
+                  <input class="form-check-input" type="checkbox" value="" id="sk">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    <span>Saya setuju dengan <a href="#" data-bs-toggle="modal" data-bs-target="#skModal" data-bs-dismiss="modal">Syarat dan Ketentuan Travel Alam</a></span>
+                  </label>
+                </div>
+                <button type="submit" id="signup" class="btn btn-secondary btn-theme mt-3 w-100" style="border-radius: 3rem;" disabled>Sign Up</button>
               </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Login Modal -->
+      <div class="modal fade" id="skModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content" style="border-radius: 20px;">
+            <div class="modal-header border-bottom-0">
+              <button type="button" class="btn-close mt-2 float-end" data-bs-dismiss="modal" aria-label="Close" style="margin-right: 0;"></button>
+            </div>
+            <div class="modal-body p-5">
+              <h3 class="modal-title text-center mb-4" id="loginModalLabel" style="margin-top: -50px;">Syarat dan Ketentuan</h3>
+              <ul>
+                <li>Penyewa wajib menggunakan identitas asli, masih berlaku dan sesuai yang datang menyewa, kami tidak menerima jika identitas orang lain yang bukan/tidak menyewa.</li>
+                <li>Identitas asli dapat berupa E-KTP/SIM/Surat pengurusan E-KTP/ Kartu Keluarga, untuk Pelajar SMA/SMP berupa Kartu Pelajar yang masih berlaku dan E-KTP Orang tua asli.</li>
+                <li>Penyewa hanya diperbolehkan menyewa maksimal 7 Hari.</li>
+                <li>Penyewa wajib memeriksa kembali kelengkapan dan kondisi barang yang akan di ambil di tempat Pengambilan, tidak ada komplain jika sudah meninggalkan tempat pengambilan barang.</li>
+                <li>Seluruh penyewa berani bertanggung jawab dan mengganti rugi atas kerusakan barang/peralatan sewa.</li>
+                <li>Travel Alam tidak bertanggung jawab atas identitas jaminan sewa bagi penyewa yang tidak mengganti kerusakan/kehilangan barang.</li>
+                <li>Dilarang menyewakan kembali perlengkapan kepada orang lain.</li>
+                <li>Penyewa wajib menaati semua Syarat dan Ketentuan Travel alam dan menjaga barang yang disewa dengan sebaik-baiknya.</li>
+                <li>Semua tindakan pencurian / pemalsuan identitas akan diproses sesuai hukum yang berlaku.</li>
+                <li>Waktu sewa dimulai dari pengambilan barang di tempat mitra kami.</li>
+                <li>Pengambilan Barang dapat diambil di mitra sekitaran lokasi yang dipilih saat checkout barang, biasanya pada destinasi pegunungan mitra kami berada pada setiap pintu masuk jalur pendakian.</li>
+                <li>Pengembalian Barang Sewa diberikan waktu telat dengan toleransi 12 Jam, dikembalikan di mitra tempat awal pengambilan barang, jika pengembalian barang melebihi batas waktu yang diberikan akan dikenakan denda tambahan 10% harga sewa barang/hari.</li>
+                <li>Pengguna hanya dapat memesan barang 1x, dan dapat memesan barang kembali Setelah transaksi atau pengembalian barang dari Pemesanan sebelumnya</li>
+              </ul>
+              <strong>DILARANG MENYALAKAN API / KOMPOR DAN MEROKOK DI DALAM TENDA.</strong>
             </div>
           </div>
         </div>

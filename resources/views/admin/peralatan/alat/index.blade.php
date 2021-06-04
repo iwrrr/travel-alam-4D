@@ -19,7 +19,7 @@
               <tr>
                 <th style="width:10%">#</th>
                 <th style="width:25%;">Nama</th>
-                <th style="width:25%">Kategori</th>
+                <th style="width:30%">Slug</th>
                 <th style="width:20%">Harga</th>
                 <th>Aksi</th>
               </tr>
@@ -28,9 +28,9 @@
               @forelse ($tools as $tool)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
-                  <td>{{ $tool->alat }}</td>
-                  <td>{{ $tool->category->kategori }}</td>
-                  <td>Rp {{ number_format($tool->harga) }}</td>
+                  <td>{{ $tool->nama_peralatan }}</td>
+                  <td>{{ $tool->slug }}</td>
+                  <td>Rp {{ number_format($tool->harga_peralatan) }}</td>
                   <td>
                     <a href="{{ url('admin/peralatan/alat/' . $tool->id . '/edit') }}"> <i class="align-middle" data-feather="edit-2"></i></a>
                     <a href="{{ route('admin.alat.delete',  $tool->id) }}" onclick="return confirm('Apakah anda yakin?')"><i class="align-middle" data-feather="trash" style="color: red"></i></a>
@@ -45,7 +45,8 @@
           </table>
         </div>
         <div class="card-footer">
-          <a href="{{ url('admin/peralatan/alat/create') }}" class="btn btn-primary float-right">Tambah</a>
+          <a href="{{ url('admin/peralatan/alat/create') }}" class="btn btn-primary float-right mt-1">Tambah</a>
+          {{ $tools->links() }}
         </div>
       </div>
     </div>

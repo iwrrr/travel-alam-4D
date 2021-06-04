@@ -31,7 +31,7 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Custom Button
+# Custom Button and Theme
 --------------------------------------------------------------*/
 .btn-custom {
     border-radius: 10px;
@@ -46,6 +46,10 @@ h6 {
 
 .btn-theme:hover {
     background-color: #1f8064;
+}
+
+.prim-color {
+    color: #289d7d;
 }
 
 
@@ -128,12 +132,12 @@ section {
     position: fixed;
     visibility: visible;
     opacity: 1;
-    right: 15px;
-    bottom: 15px;
+    right: 30px;
+    bottom: 30px;
     z-index: 1;
     background: #ffffff;
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     transition: all 0.4s;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
@@ -142,7 +146,7 @@ section {
 }
 
 .cart-btn i {
-    font-size: 24px;
+    font-size: 26px;
     color: #289d7d;
     line-height: 0;
 }
@@ -695,27 +699,23 @@ section {
 # Keranjang
 --------------------------------------------------------------*/
 
+.keranjang {
+    margin-top: 80px;
+    height: 800px;
+}
+
 .keranjang-line {
     background: #289d7d;
     height: 2px;
     width: 13%;
 }
 
-.prim-color {
-    color: #289d7d;
+.keranjang .card {
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.1);
+    padding-bottom: 0 !important;
 }
-
-.konfirmasi-line {
-    background: #289d7d;
-    height: 2px;
-    width: 27%;
-}
-
-.keranjang {
-    margin-top: 80px;
-    height: 800px;
-}
-
 
 /*--------------------------------------------------------------
 # Peralatan
@@ -726,7 +726,7 @@ section {
 }
 
 .peralatan.hiking {
-    height: 1000px;
+    height: max-content;
 }
 
 .peralatan.surfing {
@@ -736,7 +736,7 @@ section {
 .custom-card {
     border-radius: 15px;
     border: none;
-    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
 
 .custom-img {
@@ -747,12 +747,9 @@ section {
 # Checkout
 --------------------------------------------------------------*/
 
-#body-bg-checkout {
-    background-color: #fdfdfd;
-}
-
 .checkout {
     margin-top: 80px;
+    height: 950px;
 }
 
 .checkout-line {
@@ -761,14 +758,35 @@ section {
     width: 12%;
 }
 
+.checkout .card {
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.1);
+    padding-bottom: 0 !important;
+}
+
 /*--------------------------------------------------------------
-# Konfirmasi
+# Received
 --------------------------------------------------------------*/
 
-.konfirmasi {
+.received {
     margin-top: 80px;
     height: 760px;
 }
+
+.received-line {
+    background: #289d7d;
+    height: 2px;
+    width: 17%;
+}
+
+.received .card {
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.1);
+    padding-bottom: 0 !important;
+}
+
 
 /*--------------------------------------------------------------
 # Modal
@@ -790,9 +808,19 @@ section {
 /*--------------------------------------------------------------
 # Login / Sign Up
 --------------------------------------------------------------*/
+
+#loginModal .modal-content,
+#signupModal .modal-content {
+    padding: 10px;
+}
+
 #loginModal .form-control,
 #signupModal .form-control {
     border: none;
     border-bottom: 1px solid #ddd;
     border-radius: 0 !important;
+}
+
+#signupModal a {
+    text-decoration: #4154f1;
 }

@@ -10,19 +10,28 @@ class Tool extends Model
     use HasFactory;
 
     protected $fillable = [
-        'alat',
+        'nama_peralatan',
         'slug',
-        'kategori_id',
-        'harga',
+        'harga_peralatan',
     ];
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class, 'kategori_id');
-    }
-
+    /**
+     * Define relationship with the ToolImage
+     *
+     * @return void
+     */
     public function toolImages()
     {
-        return $this->hasMany('App\Models\ToolImage')->orderBy('id', 'DESC');
+        return $this->hasMany(ToolImage::class, 'id_peralatan')->orderBy('id', 'DESC');
+    }
+
+    /**
+     * Define relationship with the OrderItem
+     *
+     * @return void
+     */
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class, 'id_peralatan');
     }
 }

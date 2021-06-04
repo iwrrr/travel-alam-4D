@@ -24,25 +24,21 @@ class ToolRequest extends FormRequest
     public function rules()
     {
         $id = (int) $this->get('id');
-        $kategori_id = (int) $this->get('kategori_id');
-        $harga = 'numeric';
+        $harga_peralatan = 'numeric';
 
         if ($this->method() == 'PUT') {
-            $alat = 'required|unique:tools,alat,' . $id;
+            $nama_peralatan = 'required|unique:tools,nama_peralatan,' . $id;
             $slug = 'unique:tools,slug,' . $id;
-            $kategori = 'required:tools,kategori_id,' . $kategori_id;
-            $harga .= '|required';
+            $harga_peralatan .= '|required';
         } else {
-            $alat = 'required|unique:tools,alat';
+            $nama_peralatan = 'required|unique:tools,nama_peralatan';
             $slug = 'unique:tools,slug';
-            $kategori = 'required:tools,kategori_id';
         }
 
         return [
-            'alat' => $alat,
+            'nama_peralatan' => $nama_peralatan,
             'slug' => $slug,
-            'kategori_id' => $kategori,
-            'harga' => $harga,
+            'harga_peralatan' => $harga_peralatan,
         ];
     }
 }

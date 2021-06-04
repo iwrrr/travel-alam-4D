@@ -10,12 +10,12 @@ class LocationImage extends Model
     use HasFactory;
 
     protected $fillable = [
-        'location_id',
+        'id_lokasi',
         'path',
     ];
 
     public function location()
     {
-        return $this->belongsTo(Location::class);
+        return $this->belongsTo(Location::class, 'id_lokasi');
     }
 }

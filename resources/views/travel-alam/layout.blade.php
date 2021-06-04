@@ -23,8 +23,18 @@
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
 
+  <!-- Feather Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
   <!-- Template Main CSS File -->
   <link href="{{ asset('travel-alam/assets/css/style.css') }}" rel="stylesheet">
+
+  <!-- JQuery -->
+  <script src="{{ asset('travel-alam/assets/vendor/jquery/jquery-3.6.0.min.js') }}"></script>
+  
+  <!-- Select2 -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 
 <body>
@@ -36,6 +46,8 @@
   @include('travel-alam.partials.footer')
 
   @include('travel-alam.partials.script')
+  
+  @include('sweetalert::alert')
 
 </body>
 

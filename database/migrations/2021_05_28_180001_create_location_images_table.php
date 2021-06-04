@@ -15,11 +15,11 @@ class CreateLocationImagesTable extends Migration
     {
         Schema::create('location_images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('location_id');
+            $table->unsignedBigInteger('id_lokasi');
             $table->text('path');
             $table->timestamps();
 
-            $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade');
+            $table->foreign('id_lokasi')->references('id')->on('locations')->onDelete('cascade');
         });
     }
 

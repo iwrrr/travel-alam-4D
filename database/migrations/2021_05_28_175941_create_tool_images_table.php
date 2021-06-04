@@ -14,12 +14,12 @@ class CreateToolImagesTable extends Migration
     public function up()
     {
         Schema::create('tool_images', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('tool_id');
+            $table->id();
+            $table->unsignedBigInteger('id_peralatan');
             $table->text('path');
             $table->timestamps();
 
-            $table->foreign('tool_id')->references('id')->on('tools')->onDelete('cascade');
+            $table->foreign('id_peralatan')->references('id')->on('tools')->onDelete('cascade');
         });
     }
 

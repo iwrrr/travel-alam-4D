@@ -195,11 +195,12 @@
 
 })();
 
-// Login Modal
+// Enable Button in Sign Up Modal
 
-$(document).ready(function() {
-  $('#loginModal').modal('show');
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  });
+$('#sk').click(function () {
+  if ($(this).is(':checked')) {
+    $('#signup').attr('disabled', false);
+  } else {
+    $('#signup').attr('disabled', true);
+  }
 });

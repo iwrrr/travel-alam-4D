@@ -25,18 +25,20 @@ class UserSeeder extends Seeder
         // }
 
         $admin = User::create([
-            'name' => 'Admin',
+            'nama_depan' => 'Admin',
+            'nama_belakang' => 'Travel Alam',
             'email' => 'admin@travelalam.com',
-            'tel' => '08123456789',
+            'no_telepon' => '08123456789',
             'password' => bcrypt('admin'),
         ]);
 
         $admin->assignRole('admin');
 
         $user = User::create([
-            'name' => 'User',
-            'email' => 'user@example.com',
-            'tel' => '08112233445',
+            'nama_depan' => 'User',
+            'nama_belakang' => 'Travel Alam',
+            'email' => 'irya.muhammad15@gmail.com',
+            'no_telepon' => '08112233445',
             'password' => bcrypt('user'),
         ]);
 

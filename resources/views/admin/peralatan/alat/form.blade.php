@@ -25,18 +25,13 @@
             @endif
 
             <div class="form-group mb-3">
-              {!! Form::label('alat', 'Nama Peralatan', ['class' => 'mb-2']) !!}
-              {!! Form::text('alat', null, ['class' => 'form-control form-control-lg', 'placeholder' => 'Masukkan nama alat']) !!}
+              {!! Form::label('nama_peralatan', 'Nama Peralatan', ['class' => 'mb-2']) !!}
+              {!! Form::text('nama_peralatan', null, ['class' => 'form-control form-control-lg', 'placeholder' => 'Masukkan nama alat']) !!}
             </div>
 
             <div class="form-group mb-3">
-              {!! Form::label('kategori_id', 'Kategori', ['class' => 'mb-2']) !!}
-              {!! Form::select('kategori_id', $categories, null, ['class' => 'form-control', 'placeholder' => '- Pilih Kategori -']) !!}
-            </div>
-
-            <div class="form-group mb-3">
-              {!! Form::label('harga', 'Harga', ['class' => 'mb-2']) !!}
-              {!! Form::number('harga', null, ['class' => 'form-control form-control-lg']) !!}
+              {!! Form::label('harga_peralatan', 'Harga', ['class' => 'mb-2']) !!}
+              {!! Form::number('harga_peralatan', null, ['class' => 'form-control form-control-lg']) !!}
             </div>
             
             <div class="form-footer pt-5">

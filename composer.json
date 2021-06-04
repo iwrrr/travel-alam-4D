@@ -13,6 +13,8 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "laravelcollective/html": "^6.2",
+        "midtrans/midtrans-php": "^2.3",
+        "realrashid/sweet-alert": "^3.2",
         "spatie/laravel-permission": "^4.0"
     },
     "require-dev": {

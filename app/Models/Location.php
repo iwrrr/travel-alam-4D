@@ -10,37 +10,22 @@ class Location extends Model
     use HasFactory;
 
     protected $fillable = [
-        'lokasi',
+        'nama_lokasi',
         'slug',
-        'wisata_id',
-        'provinsi_id',
+        'id_provinsi',
         'deskripsi',
-        'jenis',
         'jalur_pendakian',
         'rute_termudah',
         'rute_normal'
     ];
 
-    public function tour()
-    {
-        return $this->belongsTo(Tour::class, 'wisata_id');
-    }
-
     public function province()
     {
-        return $this->belongsTo(Province::class, 'provinsi_id');
+        return $this->belongsTo(Province::class, 'id_provinsi');
     }
 
     public function locationImages()
     {
-        return $this->hasMany(LocationImage::class)->orderBy('id', 'ASC');
-    }
-
-    public static function types()
-    {
-        return [
-            'pegunungan' => 'Pegunungan',
-            'non-pegunungan' => 'Non-Pegunungan'
-        ];
+        return $this->hasMany(LocationImage::class, 'id_lokasi')->orderBy('id', 'ASC');
     }
 }

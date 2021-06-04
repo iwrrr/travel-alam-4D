@@ -19,7 +19,7 @@
               <tr>
                 <th style="width:15%;">#</th>
                 <th style="width:25%;">Lokasi</th>
-                <th style="width:25%">Wisata</th>
+                <th style="width:25%">Slug</th>
                 <th style="width:20%">Provinsi</th>
                 <th>Aksi</th>
               </tr>
@@ -28,9 +28,9 @@
               @forelse ($locations as $location)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
-                  <td>{{ $location->lokasi }}</td>
-                  <td>{{ $location->tour->wisata }}</td>
-                  <td>{{ $location->province->provinsi }}</td>
+                  <td>{{ $location->nama_lokasi }}</td>
+                  <td>{{ $location->slug }}</td>
+                  <td>{{ $location->province->nama_provinsi }}</td>
                   <td>
                     <a href="{{ url('admin/destinasi/lokasi/' . $location->id . '/edit') }}"> <i class="align-middle" data-feather="edit-2"></i></a>
                     <a href="{{ route('admin.lokasi.delete',  $location->id) }}" onclick="return confirm('Apakah anda yakin?')"><i class="align-middle" data-feather="trash" style="color: red"></i></a>
@@ -46,6 +46,7 @@
         </div>
         <div class="card-footer text-right">
           <a href="{{ url('admin/destinasi/lokasi/create') }}" class="btn btn-primary">Tambah</a>
+          {{ $locations->links() }}
         </div>
       </div>
     </div>
