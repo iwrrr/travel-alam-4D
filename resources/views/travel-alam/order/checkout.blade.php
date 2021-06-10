@@ -57,7 +57,7 @@
                 </tbody>
                 <tfoot>
                   <td colspan="4" align="right"><p class="my-3 prim-color"><strong>Total Penyewaan: </strong></p></td>
-                  <td><p class="my-3 prim-color">Rp. {{ \Cart::getSubTotal() }}</p></td>
+                  <td><p class="my-3 prim-color">Rp. {{ number_format(\Cart::getSubTotal()) }}</p></td>
                 </tfoot>
               </table>
             </div>

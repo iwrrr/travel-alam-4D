@@ -201,15 +201,15 @@ class OrderController extends Controller
     {
         $userId = Auth::user()->id;
         $duration = $params['hari'];
-        // $subTotal = Cart::session($userId)->getSubTotal();
+        $subTotal = Cart::session($userId)->getSubTotal();
         $cartItems = Cart::session($userId)->getContent();
 
         if ($params && $cartItems) {
             foreach ($cartItems as $item) {
                 if ($item->quantity > 3) {
-                    $itemTotal = $item->quantity * $item->price - 5000;
+                    $subTotal - 5000;
                 } else {
-                    $itemTotal = $item->quantity * $item->price;
+                    $subTotal;
                 }
 
                 $orderItemParams = [
@@ -217,17 +217,17 @@ class OrderController extends Controller
                     'nama_peralatan' => $item->name,
                     'harga_peralatan' => $item->price,
                     'jumlah' => $item->quantity,
-                    'subtotal' => $itemTotal,
+                    'subtotal' => $subTotal,
                 ];
 
-                $subTotal = $orderItemParams['subtotal'];
+                // $subTotal = $orderItemParams['subtotal'];
             }
+        }
 
-            if ($duration > 2) {
-                $total = $subTotal * $duration - 5000;
-            } else {
-                $total = $subTotal * $duration;
-            }
+        if ($duration > 2) {
+            $total = $subTotal * $duration - 5000;
+        } else {
+            $total = $subTotal * $duration;
         }
 
 

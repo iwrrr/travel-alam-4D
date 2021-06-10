@@ -22,9 +22,9 @@
       <div class="row mb-3">
         <div class="col-3">
           <h5 class="prim-color" style="margin-bottom: -10px;"><strong>Penyewa</strong></h5>
-          <br> Nama  &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;&nbsp;: {{ $order->nama_depan }} {{ $order->nama_belakang }}
-          <br> Email &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;: {{ $order->email_pelanggan }}
-          <br> Telepon &nbsp;   &nbsp;   &nbsp;   &nbsp;: {{ $order->no_telepon }}
+          <br> Nama  &nbsp;   &nbsp;   &nbsp;   &nbsp;: {{ $order->nama_depan }} {{ $order->nama_belakang }}
+          <br> Email &nbsp;   &nbsp;   &nbsp;   &nbsp;      : {{ $order->email_pelanggan }}
+          <br> Telepon &nbsp;   &nbsp;   : {{ $order->no_telepon }}
         </div>
 
         <div class="col-3">

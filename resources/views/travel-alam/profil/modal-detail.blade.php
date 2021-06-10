@@ -66,3 +66,12 @@
     </div>
   </div>
 </div>
+@if (!empty($order->pesan_dibatalkan))
+  <hr>
+  <div class="row">
+    <div class="col">
+      <span style="font-weight: 600;">Pesan dibatalkan</span><br>
+      <span>{{ $order->pesan_dibatalkan }}</span>
+    </div>
+  </div>
+@endif

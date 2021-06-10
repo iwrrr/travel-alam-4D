@@ -30,11 +30,6 @@
                     <input type="text" class="form-control datepicker" readonly value="{{ !empty(request()->input('end')) ? request()->input('end') : '' }}" name="end">
                   </div>
                 </div>
-                {{-- <div class="col-md-2">
-                  <div class="input-group">
-                    <input type="text" class="form-control datepicker" readonly value="{{ !empty(request()->input('end')) ? request()->input('end') : '' }}" name="end" placeholder="Sampai">
-                  </div>
-                </div> --}}
                 <div class="col-md-2">
                   {{ Form::select('status', $statuses, !empty(request()->input('status')) ? request()->input('status') : null, ['placeholder' => 'Semua Status', 'class' => 'form-control']) }}
                 </div>
@@ -82,7 +77,7 @@
 
       <!-- Modal -->
       @if (!empty($order))
-      <div class="modal fade modal-detail" id="modal-detail" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+      <div class="modal fade modal-detail" id="modal-detail" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" style="z-index: 9999">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
           <div class="modal-content p-2">
             <div class="modal-header border-0">

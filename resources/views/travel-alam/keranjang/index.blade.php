@@ -71,11 +71,11 @@
               <table class="table">
                 <tbody>
                   <tr>
-                    <td width="64%">Subtotal</td>
+                    <td width="54%">Subtotal</td>
                     <td>Rp. {{ number_format(\Cart::session($userId)->getSubTotal()) }}</td>
                   </tr>
                   <tr>
-                    <td width="64%">Total</td>
+                    <td width="54%">Total</td>
                     <td>Rp. {{ number_format(\Cart::session($userId)->getTotal()) }}</td>
                   </tr>
                 </tbody>
