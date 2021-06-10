@@ -20,6 +20,86 @@ use DateTime;
 class OrderController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->data['statuses'] = Order::STATUSES;
+
+        $this->middleware('auth');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        $orders = Order::forUser(Auth::user())->with('orderItems')
+            ->orderBy('created_at', 'DESC');
+
+        $q = $request->input('q');
+        if ($q) {
+            $orders = $orders->where('kode', 'like', '%' . $q . '%')
+                ->orWhere('nama_depan', 'like', '%' . $q . '%')
+                ->orWhere('nama_belakang', 'like', '%' . $q . '%');
+        }
+
+        if ($request->input('status') && in_array($request->input('status'), array_keys(Order::STATUSES))) {
+            $orders = $orders->where('status', '=', $request->input('status'));
+        }
+
+        $startDate = $request->input('start');
+        $endDate = $request->input('end');
+
+        if ($startDate && !$endDate) {
+            Session::flash('error', 'The end date is required if the start date is present');
+            return redirect('admin/transaksi');
+        }
+
+        if (!$startDate && $endDate) {
+            Session::flash('error', 'The start date is required if the end date is present');
+            return redirect('admin/transaksi');
+        }
+
+        if ($startDate && $endDate) {
+            if (strtotime($endDate) < strtotime($startDate)) {
+                Session::flash('error', 'The end date should be greater or equal than start date');
+                return redirect('admin/transaksi');
+            }
+
+            $order = $orders->whereRaw("DATE(tanggal_pemesanan) >= ?", $startDate)
+                ->whereRaw("DATE(tanggal_pemesanan) <= ? ", $endDate);
+        }
+
+        $this->data['orders'] = $orders->paginate(5);
+
+        // dd($orders);
+
+        return view('travel-alam.profil.riwayat', $this->data);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id order ID
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $order = Order::forUser(Auth::user())->with('orderItems')->findOrFail($id);
+        $this->data['order'] = $order;
+
+        return view('travel-alam.profil.modal-detail', $this->data);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -76,7 +156,7 @@ class OrderController extends Controller
 
             $this->_sendEmailOrderReceived($order);
 
-            Alert::success('Terima kasih. Pesanan telah diterima!');
+            Alert::success('Terima kasih!', 'Pesanan telah diterima!');
             return redirect('pesanan/diterima/' . $order->id);
         }
 
@@ -142,15 +222,16 @@ class OrderController extends Controller
 
                 $subTotal = $orderItemParams['subtotal'];
             }
+
+            if ($duration > 2) {
+                $total = $subTotal * $duration - 5000;
+            } else {
+                $total = $subTotal * $duration;
+            }
         }
 
-        if ($duration >= 2) {
-            $total = $subTotal * $duration - 5000;
-        } else {
-            $total = $subTotal * $duration;
-        }
 
-        $orderDate = date('Y-m-d H:i:s');
+        $orderDate = date('Y-m-d H:i');
         $paymentDue = (new DateTime($orderDate))->modify('+1 day')->format('Y-m-d H:i:s');
 
         $orderParams = [

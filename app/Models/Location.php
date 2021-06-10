@@ -13,6 +13,8 @@ class Location extends Model
         'nama_lokasi',
         'slug',
         'id_provinsi',
+        'kabupaten',
+        'map',
         'deskripsi',
         'jalur_pendakian',
         'rute_termudah',

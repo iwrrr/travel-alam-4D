@@ -46,7 +46,7 @@
 
       <div class="col-lg-2">
         
-        @if (!empty($tool))  
+        @if (!empty($tool))
           @include('admin.peralatan.alat.menu')
         @endif
 

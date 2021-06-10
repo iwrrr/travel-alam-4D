@@ -1,4 +1,7 @@
 	<script src="{{ asset('admin-kit/assets/js/app.js') }}"></script>
+	<script src="{{ asset('admin-kit/assets/vendor/daterangepicker/moment.min.js') }}"></script>
+	<script src="{{ asset('admin-kit/assets/vendor/daterangepicker/daterangepicker.js') }}"></script>
+	<script src="{{ asset('admin-kit/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
@@ -215,5 +218,10 @@
 				prevArrow: "<span class=\"fas fa-chevron-left\" title=\"Previous month\"></span>",
 				nextArrow: "<span class=\"fas fa-chevron-right\" title=\"Next month\"></span>",
 			});
+		});
+	</script>
+	<script>
+		$('.datepicker').datepicker({
+			format: 'yyyy-mm-dd'
 		});
 	</script>

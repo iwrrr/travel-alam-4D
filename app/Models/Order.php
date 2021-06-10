@@ -5,11 +5,12 @@ namespace App\Models;
 use App\Helpers\General;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
 
 class Order extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'id_pengguna',
@@ -30,21 +31,28 @@ class Order extends Model
         'total',
         'diterima_oleh',
         'diterima_pada',
-        'ditolak_oleh',
-        'ditolak_pada',
-        'ditolak_pada',
-        'pesan_ditolak'
+        'dibatalkan_oleh',
+        'dibatalkan_pada',
+        'dibatalkan_pada',
+        'pesan_dibatalkan'
     ];
 
-    public const CREATED = 'created';
-    public const CONFIRMED = 'confirmed';
-    public const COMPLETED = 'completed';
-    public const CANCELLED = 'cancelled';
+    public const CREATED = 'Dibuat';
+    public const CONFIRMED = 'Diterima';
+    public const COMPLETED = 'Selesai';
+    public const CANCELLED = 'Dibatalkan';
 
     public const ORDERCODE = 'TA';
 
-    public const PAID = 'paid';
-    public const UNPAID = 'unpaid';
+    public const PAID = 'Dibayar';
+    public const UNPAID = 'Belum dibayar';
+
+    public const STATUSES = [
+        self::CREATED => 'Dibuat',
+        self::CONFIRMED => 'Diterima',
+        self::COMPLETED => 'Selesai',
+        self::CANCELLED => 'Dibatalkan',
+    ];
 
     /**
      * Define relationship with the User
@@ -54,6 +62,19 @@ class Order extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'id_pengguna');
+    }
+
+    /**
+     * Define scope forUser
+     *
+     * @param Eloquent $query query builder
+     * @param User     $user  limit
+     *
+     * @return void
+     */
+    public function scopeForUser($query, $user)
+    {
+        return $query->where('id_pengguna', $user->id);
     }
 
     /**
@@ -108,8 +129,53 @@ class Order extends Model
         return Order::where('kode', '=', $orderCode)->exists();
     }
 
+    /**
+     * Check order is paid or not
+     *
+     * @return boolean
+     */
     public function isPaid()
     {
         return $this->status_pembayaran == self::PAID;
+    }
+
+    /**
+     * Check order is created
+     *
+     * @return boolean
+     */
+    public function isCreated()
+    {
+        return $this->status == self::CREATED;
+    }
+
+    /**
+     * Check order is confirmed
+     *
+     * @return boolean
+     */
+    public function isConfirmed()
+    {
+        return $this->status == self::CONFIRMED;
+    }
+
+    /**
+     * Check order is completed
+     *
+     * @return boolean
+     */
+    public function isCompleted()
+    {
+        return $this->status == self::COMPLETED;
+    }
+
+    /**
+     * Check order is cancelled
+     *
+     * @return boolean
+     */
+    public function isCancelled()
+    {
+        return $this->status == self::CANCELLED;
     }
 }

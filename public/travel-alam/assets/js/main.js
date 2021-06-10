@@ -204,3 +204,49 @@ $('#sk').click(function () {
     $('#signup').attr('disabled', true);
   }
 });
+
+$(function () {
+  $('.owl-carousel').owlCarousel({
+    // loop:true,
+    margin:10,
+    // nav:true,
+    navText:["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+    responsive:{
+      0:{
+          items:1
+      },
+      600:{
+          items:3
+      },
+      1000:{
+          items:4
+      }
+    }
+  })
+});
+
+// Custom button nav owl-carousel
+
+$('#next-slide-jabar').on('click', function () {
+  $('.jabar').trigger('next.owl.carousel');
+});
+
+$('#prev-slide-jabar').on('click', function () {
+  $('.jabar').trigger('prev.owl.carousel');
+});
+
+$('#next-slide-jateng').on('click', function () {
+  $('.jateng').trigger('next.owl.carousel');
+});
+
+$('#prev-slide-jateng').on('click', function () {
+  $('.jateng').trigger('prev.owl.carousel');
+});
+
+$('#next-slide-jatim').on('click', function () {
+  $('.jatim').trigger('next.owl.carousel');
+});
+
+$('#prev-slide-jatim').on('click', function () {
+  $('.jatim').trigger('prev.owl.carousel');
+});

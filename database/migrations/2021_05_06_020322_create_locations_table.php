@@ -18,6 +18,8 @@ class CreateLocationsTable extends Migration
             $table->string('nama_lokasi');
             $table->string('slug');
             $table->unsignedBigInteger('id_provinsi');
+            $table->string('kabupaten')->nullable();
+            $table->string('map')->nullable();
             $table->text('deskripsi')->nullable();
             $table->text('jalur_pendakian')->nullable();
             $table->text('rute_termudah')->nullable();

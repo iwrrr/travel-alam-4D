@@ -6,24 +6,12 @@
 
     <ul class="sidebar-nav">
       <li class="sidebar-header">
-        Halaman
+        
       </li>
 
       <li class="sidebar-item {{ ($currentAdminMenu == 'dashboard') ? 'active' : ''}}">
         <a class="sidebar-link" href="{{ url('admin/dashboard') }}">
           <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
-        </a>
-      </li>
-
-      <li class="sidebar-item">
-        <a class="sidebar-link" href="#">
-          <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
-        </a>
-      </li>
-
-      <li class="sidebar-item">
-        <a class="sidebar-link" href="#">
-          <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Settings</span>
         </a>
       </li>
 
@@ -50,10 +38,13 @@
         </ul>
       </li>
 
-      <li class="sidebar-item">
-        <a class="sidebar-link" href="#">
+      <li class="sidebar-item {{ ($currentAdminMenu == 'transaksi') ? 'expand active' : ''}}">
+        <a data-target="#transaksi" data-toggle="collapse" class="sidebar-link collapsed">
           <i class="align-middle" data-feather="credit-card"></i> <span class="align-middle">Transaksi</span>
         </a>
+        <ul id="transaksi" class="sidebar-dropdown list-unstyled collapse" data-parent="#sidebar">
+          <li class="sidebar-item {{ ($currentAdminSubMenu == 'pesanan') ? 'active' : ''}}"><a class="sidebar-link" href="{{ url('admin/transaksi') }}">Pesanan</a></li>
+        </ul>
       </li>
     </ul>
     

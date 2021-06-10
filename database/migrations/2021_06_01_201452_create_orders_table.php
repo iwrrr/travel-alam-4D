@@ -35,15 +35,15 @@ class CreateOrdersTable extends Migration
             $table->decimal('total', 16, 2)->default(0);
             $table->unsignedBigInteger('diterima_oleh')->nullable();
             $table->dateTime('diterima_pada')->nullable();
-            $table->unsignedBigInteger('ditolak_oleh')->nullable();
-            $table->dateTime('ditolak_pada')->nullable();
-            $table->text('pesan_ditolak')->nullable();
+            $table->unsignedBigInteger('dibatalkan_oleh')->nullable();
+            $table->dateTime('dibatalkan_pada')->nullable();
+            $table->text('pesan_dibatalkan')->nullable();
             $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('id_pengguna')->references('id')->on('users');
             $table->foreign('diterima_oleh')->references('id')->on('users');
-            $table->foreign('ditolak_oleh')->references('id')->on('users');
+            $table->foreign('dibatalkan_oleh')->references('id')->on('users');
             $table->index('kode');
             $table->index(['kode', 'tanggal_pemesanan']);
             $table->index('token_pembayaran');

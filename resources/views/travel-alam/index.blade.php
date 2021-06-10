@@ -11,17 +11,17 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center">
-          <img src="{{ asset('travel-alam/assets/img/Travel Alam Logo.png') }}" alt="" data-aos="zoom-out" data-aos-delay="200" width="80%">
+          <img src="{{ asset('travel-alam/assets/img/Travel Alam Logo new.png') }}" alt="" data-aos="zoom-out" data-aos-delay="200" width="80%">
         </div>
         <div class="col-lg-6" data-aos="zoom-out" data-aos-delay="200">
           <div class="row">
             <div class="col-md-8">
-              <h1 class="text-start text-uppercase">Jelajahi indonesia yuk!</h1>
+              <h1 class="text-start text-uppercase fw-normal">Jelajahi <strong>indonesia</strong> yuk!</h1>
             </div>
           </div>
           <div class="row">
             <div class="col-md-10">
-              <h6 class="text-start">Indonesia memiliki banyak keindahan alam.
+              <h6 class="text-start fw-light">Indonesia memiliki banyak keindahan alam.
                 Banyak sekali potensi wisata alam kita yang membuat kita bangga dengan Indonesia. Tersebar lebih dari
                 17.504 pulau,
                 berapa banyak Destinasi Alam yang sudah kamu datangi?</h6>
@@ -36,46 +36,6 @@
   
   <!-- ======= Main Section ======= -->
   <main id="main">
-      
-    <!-- ======= Destinasi Wisata Section ======= -->
-    <section id="destinasi-wisata" class="destinasi-wisata">
-
-      <div class="container" data-aos="fade-up">
-
-        <div class="row mb-5">
-          <div class="col-md">
-            <header class="section-header">
-              <p>Destinasi Wisata</p>
-            </header>
-          </div>
-        </div>
-
-        <div class="row justify-content-center">
-
-          {{-- <div class="col-md-3 d-flex justify-content-center">
-            <a href="">
-              <div class="card destinasi">
-                <img src="{{ asset('travel-alam/assets/img/pantai@2x.png') }}" class="icon" width="100">
-                <img src="{{ asset('travel-alam/assets/img/pantai.jpg') }}" class="card-img">
-              </div>
-            </a>
-          </div> --}}
-
-          <div class="col-md d-flex justify-content-center">
-            <a href="">
-              <div class="card destinasi">
-                <img src="{{ asset('travel-alam/assets/img/gunung@2x.png') }}" class="icon" width="100">
-                <img src="{{ asset('travel-alam/assets/img/bromo.png') }}" class="card-img">
-              </div>
-            </a>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-    <!-- End Destinasi Wisata Section -->
 
     <!-- ======= Tentang Kami Section ======= -->
     <section id="tentang-kami" class="tentang-kami my-5">
@@ -92,8 +52,10 @@
 
         <div class="row">
 
-          <div class="col md">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione itaque id minima ut, fugit at nemo eligendi aperiam consectetur obcaecati consequuntur nisi enim ullam, omnis ipsam quidem vero. Sapiente excepturi beatae sit temporibus! Itaque odit, exercitationem voluptatem possimus non porro ad distinctio, ab mollitia sunt tenetur earum, magnam ea incidunt.</p>
+          <div class="col-md text-center">
+            <p>Travel Alam adalah website penyewaan perlengkapan hiking dengan harga yang sangat murah. Barang yang kami miliki mempunyai kualitas terbaik dan terawat dikarenakan kami mempunyai standarisasi untuk penyewaan, itu semua demi kenyamanan dan keamanan traveller.
+
+            Barang yang Kami sewakan adalah barang-barang yang sudah terpilih dalam pengujian kualitas layak pemakaian dan layak keamanannya dan juga sudah di uji oleh rekan rekan mitra kami.</p>
           </div>
 
         </div>
@@ -102,12 +64,10 @@
 
     </section>
     <!-- End Destinasi Wisata Section -->
-
     
     <a href="{{ route('peralatan') }}" class="cart-btn d-flex align-items-center justify-content-center" style="cursor: pointer;"><i
         class="fa fa-shopping-cart"></i></a>
         
   </main>
   <!-- End #main -->
-  
 @endsection

@@ -34,6 +34,16 @@
             </div>
 
             <div class="form-group mb-3">
+              {!! Form::label('kabupaten', 'Kabupaten', ['class' => 'mb-2']) !!}
+              {!! Form::text('kabupaten', null, ['class' => 'form-control']) !!}
+            </div>
+
+            <div class="form-group mb-3">
+              {!! Form::label('map', 'Lokasi Google Maps', ['class' => 'mb-2']) !!}
+              {!! Form::text('map', null, ['class' => 'form-control']) !!}
+            </div>
+
+            <div class="form-group mb-3">
               {!! Form::label('deskripsi', 'Deskripsi', ['class' => 'mb-2']) !!}
               {!! Form::textarea('deskripsi', null, ['class' => 'form-control']) !!}
             </div>

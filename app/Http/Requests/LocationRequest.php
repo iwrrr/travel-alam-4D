@@ -25,6 +25,8 @@ class LocationRequest extends FormRequest
     {
         $id = (int) $this->get('id');
         $id_provinsi = (int) $this->get('id_provinsi');
+        $kabupaten = '';
+        $map = '';
         $deskripsi = '';
         $jalur_pendakian = '';
         $rute_termudah = '';
@@ -34,6 +36,8 @@ class LocationRequest extends FormRequest
             $nama_lokasi = 'required|unique:locations,nama_lokasi,' . $id;
             $slug = 'unique:locations,slug,' . $id;
             $provinsi = 'required:locations,id_provinsi,' . $id_provinsi;
+            $kabupaten = 'required';
+            $map = 'required';
             $deskripsi = 'required';
             $jalur_pendakian = '|required';
             $rute_termudah = '|required';
@@ -48,6 +52,8 @@ class LocationRequest extends FormRequest
             'nama_lokasi' => $nama_lokasi,
             'slug' => $slug,
             'id_provinsi' => $provinsi,
+            'kabupaten' => $kabupaten,
+            'map' => $map,
             'deskripsi' => $deskripsi,
             'jalur_pendakian' => $jalur_pendakian,
             'rute_termudah' => $rute_termudah,

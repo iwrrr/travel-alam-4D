@@ -21,6 +21,8 @@ class ToolController extends Controller
 
         $this->data['currentAdminMenu'] = 'peralatan';
         $this->data['currentAdminSubMenu'] = 'alat';
+
+        $this->middleware('auth');
     }
 
     /**

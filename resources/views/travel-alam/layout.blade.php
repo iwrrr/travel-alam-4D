@@ -29,11 +29,18 @@
   <!-- Template Main CSS File -->
   <link href="{{ asset('travel-alam/assets/css/style.css') }}" rel="stylesheet">
 
+  <!-- Owl Carousel -->
+  <link rel="stylesheet" href="{{ asset('travel-alam/assets/vendor/owl-carousel/css/owl.carousel.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('travel-alam/assets/vendor/owl-carousel/css/owl.theme.default.min.css') }}">
+
   <!-- JQuery -->
   <script src="{{ asset('travel-alam/assets/vendor/jquery/jquery-3.6.0.min.js') }}"></script>
   
+  <!-- Daterangepicker -->
+	<link id="bsdp-css" rel="stylesheet" href="{{ asset('admin-kit/assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
+  
   <!-- Select2 -->
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 

@@ -22,6 +22,8 @@ class LocationController extends Controller
 
         $this->data['currentAdminMenu'] = 'destinasi';
         $this->data['currentAdminSubMenu'] = 'lokasi';
+
+        $this->middleware('auth');
     }
 
     /**

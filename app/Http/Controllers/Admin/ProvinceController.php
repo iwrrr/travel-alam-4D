@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProvinceRequest;
 use App\Models\Province;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use Str;
 use Session;
 
@@ -19,6 +19,8 @@ class ProvinceController extends Controller
 
         $this->data['currentAdminMenu'] = 'destinasi';
         $this->data['currentAdminSubMenu'] = 'provinsi';
+
+        $this->middleware('auth');
     }
 
     /**

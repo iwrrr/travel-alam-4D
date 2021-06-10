@@ -772,3 +772,156 @@ section {
     border-bottom: 1px solid #ddd;
     border-radius: 0 !important;
 }
+
+.custom-color {
+    color: #1f8064;
+}
+
+.my-controls-btns {
+    position: absolute;
+    top: 40%;
+    cursor: pointer;
+    color: #666;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    transition: all .3s;
+}
+
+.my-controls-btns:hover {
+    background-color: #ddd;
+}
+
+.my-controls-btns i {
+    font-size: 24px;
+}
+
+#prev-slide {
+    left: 250px;
+    margin-top: -10px;
+}
+
+#next-slide {
+    right: 250px;
+    margin-top: -10px;
+}
+
+/*--------------------------------------------------------------
+# Profil
+--------------------------------------------------------------*/
+.riwayat {
+    height: max-content;
+}
+
+.edit {
+    height: 800px;
+}
+
+.profil .card.menu {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.profil .nama,
+.profil .email {
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.profil .card.menu i,
+.profil .input-group-text {
+    color: #666;
+}
+
+.profil .card.menu .edit-profil {
+    color: #1f8064;
+    margin-left: -2px;
+}
+
+.profil .card.menu .daftar-transaksi {
+    color: #4154f1;
+}
+
+.profil .card.outer {
+    border-radius: 10px;
+}
+
+.profil .card.inner {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.profil .card-header {
+    background-color: #fff;
+    border-radius: 10px 10px 0 0;
+}
+
+.profil a {
+    color: #666;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.profil input:focus,
+select:focus {
+    box-shadow: none !important;
+}
+
+.profil input,
+.profil .input-group-text {
+    border-radius: 8px;
+}
+
+.profil select {
+    border-radius: 8px !important;
+}
+
+.profil .datepicker {
+    cursor: context-menu;
+    background-color: #fff;
+}
+
+.profil .btn-show {
+    background-color: #289d7d;
+    border-radius: 8px;
+    border: none;
+    width: 136px;
+    transition: all .3s;
+}
+
+.profil .btn-show:hover {
+    background-color: #1f8064;
+}
+
+.profil .inner p {
+    font-size: 15px;
+}
+
+.profil .inner .tanggal {
+    margin-top: -8px;
+}
+
+.profil .inner .detail {
+    color: #289d7d;
+    cursor: pointer;
+}
+
+.profil .modal-detail .modal-content {
+    border-radius: 10px;
+    border: none;
+}
+
+.profil .modal-dialog span {
+    font-size: 14px;
+}
+
+.profil .modal-dialog span.kode,
+.profil .modal-dialog span.status,
+.profil .modal-dialog span.tanggal {
+    color: #2baf8c;
+    font-weight: bold;
+}

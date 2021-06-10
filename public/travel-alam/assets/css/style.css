@@ -30,6 +30,11 @@ h6 {
     font-family: "Quicksand", sans-serif;
 }
 
+input:focus {
+    box-shadow: none !important;
+    border-bottom: 1px solid #289d7d;
+}
+
 /*--------------------------------------------------------------
 # Custom Button and Theme
 --------------------------------------------------------------*/
@@ -52,6 +57,15 @@ h6 {
     color: #289d7d;
 }
 
+.section-header p {
+    position: relative;
+    top: 2px;
+    color: #289d7d;
+}
+
+.custom-color {
+    color: #1f8064;
+}
 
 /*--------------------------------------------------------------
 # Sections
@@ -618,43 +632,123 @@ section {
 # Destinasi Wisata
 --------------------------------------------------------------*/
 
-.section-header p {
-    position: relative;
-    top: 2px;
-    color: #289d7d;
+.destinasi {
+    height: max-content;
 }
 
-.card.destinasi {
-    margin-top: 50px;
-    border-radius: 20px !important;
-    height: 400px;
-    width: 320px;
+.destinasi .card {
+    width: max-content;
     border: none;
-    box-shadow: 4px 6px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
-.card.destinasi .icon {
+.destinasi img {
+    width: 300px !important;
+    height: 170px;
+    border-radius: 10px 10px 0 0;
+}
+
+.controls-btns-jabar {
     position: absolute;
-    margin: -40px 120px;
+    top: 42%;
+    cursor: pointer;
+    color: #1f8064;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    transition: all .3s;
 }
 
-.card.destinasi img {
-    border-radius: 20px !important;
-    overflow: hidden;
+.controls-btns-jabar:hover {
+    background-color: #ddd;
+}
+
+.controls-btns-jabar i {
+    font-size: 24px;
+}
+
+#prev-slide-jabar {
+    left: 250px;
+    /* margin-top: -10px; */
+}
+
+#next-slide-jabar {
+    right: 258px;
+    /* margin-top: -10px; */
+}
+
+.controls-btns-jateng {
+    position: absolute;
+    top: 84%;
+    cursor: pointer;
+    color: #1f8064;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    transition: all .3s;
+}
+
+.controls-btns-jateng:hover {
+    background-color: #ddd;
+}
+
+.controls-btns-jateng i {
+    font-size: 24px;
+}
+
+#prev-slide-jateng {
+    left: 250px;
+    /* margin-top: -10px; */
+}
+
+#next-slide-jateng {
+    right: 258px;
+    /* margin-top: -10px; */
+}
+
+.controls-btns-jatim {
+    position: absolute;
+    top: 123%;
+    cursor: pointer;
+    color: #1f8064;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    transition: all .3s;
+}
+
+.controls-btns-jatim:hover {
+    background-color: #ddd;
+}
+
+.controls-btns-jatim i {
+    font-size: 24px;
+}
+
+#prev-slide-jatim {
+    left: 250px;
+    /* margin-top: -10px; */
+}
+
+#next-slide-jatim {
+    right: 258px;
+    /* margin-top: -10px; */
+}
+
+.detail-destinasi {
+    height: 1000px;
 }
 
 /*--------------------------------------------------------------
 # Tentang Kami
 --------------------------------------------------------------*/
-/* .tentang-kami .flower3 {
-    width: 700px;
-    position: absolute;
-    top: 180vh;
-    right: 10vh;
-    opacity: 0.1;
-    z-index: -1;
-    transform: scaleX(-1) rotate(10deg);
-} */
 
 .tentang-kami {
     margin-top: -100px;
@@ -667,6 +761,7 @@ section {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
+
 .footer {
     background: rgba(0, 0, 0, 0.05);
     padding: 0 0 30px 0;
@@ -787,24 +882,6 @@ section {
     padding-bottom: 0 !important;
 }
 
-
-/*--------------------------------------------------------------
-# Modal
---------------------------------------------------------------*/
-
-.card.modal-destinasi {
-    height: 280px;
-    width: 220px;
-    border-radius: 10px;
-}
-
-.card.modal-destinasi .card-img {
-    height: 280px;
-    width: 220px;
-    margin-bottom: 15px;
-    border-radius: 10px;
-}
-
 /*--------------------------------------------------------------
 # Login / Sign Up
 --------------------------------------------------------------*/
@@ -823,4 +900,186 @@ section {
 
 #signupModal a {
     text-decoration: #4154f1;
+}
+
+/*--------------------------------------------------------------
+# Profil
+--------------------------------------------------------------*/
+.riwayat {
+    height: 1000px;
+}
+
+.edit {
+    height: 800px;
+}
+
+.profil a {
+    color: #666;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.profil .card.menu {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.profil .nama,
+.profil .email {
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.profil .card.menu i,
+.profil .input-group-text {
+    color: #666;
+}
+
+.profil .card.outer {
+    border-radius: 10px;
+}
+
+.profil .card.inner {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.profil .card-header {
+    background-color: #fff;
+    border-radius: 10px 10px 0 0;
+}
+
+.profil input:focus,
+select:focus {
+    box-shadow: none !important;
+}
+
+.profil input {
+    border-radius: 8px;
+}
+
+.profil select {
+    border-radius: 8px !important;
+}
+
+.profil .datepicker {
+    cursor: context-menu;
+    background-color: #fff;
+}
+
+.profil .btn-show {
+    background-color: #289d7d;
+    border-radius: 8px;
+    border: none;
+    width: 136px;
+    transition: all .3s;
+}
+
+.profil .btn-show:hover {
+    background-color: #1f8064;
+}
+
+.profil .inner p {
+    font-size: 15px;
+}
+
+.profil .inner .tanggal {
+    margin-top: -8px;
+}
+
+.profil .inner .detail {
+    color: #289d7d;
+    cursor: pointer;
+}
+
+.profil .modal-detail .modal-content {
+    border-radius: 10px;
+    border: none;
+}
+
+.profil .modal-dialog span {
+    font-size: 14px;
+}
+
+.profil .modal-dialog span.kode,
+.profil .modal-dialog span.status,
+.profil .modal-dialog span.tanggal {
+    color: #2baf8c;
+    font-weight: bold;
+}
+
+.profil .select2-selection__rendered {
+    line-height: 36px !important;
+}
+
+.profil .select2-container .select2-selection--single {
+    height: 38px !important;
+}
+
+.profil .select2-selection__arrow {
+    height: 34px !important;
+}
+
+/*--------------------------------------------------------------
+# Pagination
+--------------------------------------------------------------*/
+.pagination > li {
+    margin: 0 5px;
+}
+
+.pagination .page-link {
+    border-radius: 50% !important;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination .page-link i {
+    font-size: 10px;
+    line-height: 23px;
+}
+
+.pagination li.disabled span.page-link,
+.pagination li span.page-link,
+.pagination li.disabled a.page-link {
+    border: none;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.pagination li.active .page-link,
+.pagination li .page-link,
+.pagination li .page {
+    line-height: 22px !important;
+    border: none;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.pagination > li.active > a {
+    background-color: white;
+    color: purple;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+    box-shadow: none !important;
+    color: #289d7d;
+}
+
+.pagination>li.active>a,
+.pagination>li.active>span {
+    background-color: #289d7d !important;
+    border: none;
+    cursor: context-menu;
+}
+
+.pagination > li.active > a:focus,
+.pagination > li.active > a:hover,
+.pagination > li.active > span:focus,
+.pagination > li.active > span:hover {
+    color: white;
 }
