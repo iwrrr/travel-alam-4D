@@ -123,7 +123,7 @@
     </div>
 
   </section>
-  <a href="{{ url('keranjang') }}" class="cart-btn d-flex align-items-center justify-content-center" style="cursor: pointer;"><i
+  <a href="{{ url('peralatan') }}" class="cart-btn d-flex align-items-center justify-content-center" style="cursor: pointer;"><i
         class="fa fa-shopping-cart"></i></a>
   <!-- End Destinasi Section -->
 @endsection
