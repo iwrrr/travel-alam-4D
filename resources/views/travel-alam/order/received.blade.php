@@ -34,8 +34,8 @@
         </div>
         
         <div class="col-3" style="margin-top: 13px; margin-left: -50px">
-          <br> Lokasi: {{ $order->lokasi }}
-          <br> Provinsi: {{ substr($order->provinsi, 2) }}
+          <br> Lokasi &nbsp;   &nbsp;&nbsp; : {{ $order->lokasi }}
+          <br> Provinsi &nbsp;&nbsp; : {{ substr($order->provinsi, 2) }}
           <br> Tanggal Penyewaan: {{ date('d M Y', strtotime($order->tanggal)) }}
         </div>
 

@@ -206,10 +206,8 @@ class OrderController extends Controller
 
         if ($params && $cartItems) {
             foreach ($cartItems as $item) {
-                if ($item->quantity > 3) {
-                    $subTotal - 5000;
-                } else {
-                    $subTotal;
+                if ($item->quantity > 2) {
+                    $subTotal -= 5000;
                 }
 
                 $orderItemParams = [
@@ -219,8 +217,6 @@ class OrderController extends Controller
                     'jumlah' => $item->quantity,
                     'subtotal' => $subTotal,
                 ];
-
-                // $subTotal = $orderItemParams['subtotal'];
             }
         }
 

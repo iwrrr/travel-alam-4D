@@ -796,7 +796,7 @@ section {
 
 .keranjang {
     margin-top: 80px;
-    height: 800px;
+    height: 1100px;
 }
 
 .keranjang-line {
@@ -993,10 +993,6 @@ select:focus {
     color: #289d7d;
     cursor: pointer;
 }
-
-/* .profil .modal-detail {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-} */
 
 .profil .modal-detail .modal-content {
     border-radius: 10px;
