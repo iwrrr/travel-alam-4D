@@ -19,12 +19,12 @@
       </div>
 
       <div class="row">
-        <div class="col-4">
+        <div class="col-lg-5 col-md-5 col-xl-5">
           <a href="{{ $location->map }}" target="_blank">
             <img src="{{ asset('storage/' . $location->locationImages->first()->path) }}" alt="{{ $location->nama_lokasi }}" width="400" class="rounded-3 shadow">
           </a>
         </div>
-        <div class="col">
+        <div class="col-lg-7 col-md-7 col-xl-7">
           <p>{{ $location->deskripsi }}</p>
         </div>
       </div>

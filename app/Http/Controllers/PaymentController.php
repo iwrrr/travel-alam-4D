@@ -135,7 +135,7 @@ class PaymentController extends Controller
         }
 
         // \Session::flash('success', "Thank you for completing the payment process!");
-        Alert::success("Terima kasih telah menyelesaikan proses pembayaran!");
+        Alert::success("Terima kasih!, 'Anda telah menyelesaikan proses pembayaran.");
 
         return redirect('pesanan/diterima/' . $order->id);
     }

@@ -283,7 +283,7 @@ section {
 
 .navbar a:hover,
 .navbar .active,
-.navbar li:hover > a {
+.navbar li:hover>a {
     color: #1f8064;
     text-shadow: none;
 }
@@ -323,11 +323,11 @@ section {
 
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
-.navbar .dropdown ul li:hover > a {
+.navbar .dropdown ul li:hover>a {
     color: #1f8064;
 }
 
-.navbar .dropdown:hover > ul {
+.navbar .dropdown:hover>ul {
     opacity: 1;
     top: 100%;
     visibility: visible;
@@ -339,7 +339,7 @@ section {
     visibility: hidden;
 }
 
-.navbar .dropdown .dropdown:hover > ul {
+.navbar .dropdown .dropdown:hover>ul {
     opacity: 1;
     top: 0;
     left: 100%;
@@ -350,7 +350,8 @@ section {
     .navbar .dropdown .dropdown ul {
         left: -90%;
     }
-    .navbar .dropdown .dropdown:hover > ul {
+
+    .navbar .dropdown .dropdown:hover>ul {
         left: -100%;
     }
 }
@@ -400,6 +401,7 @@ section {
     .mobile-nav-toggle {
         display: block;
     }
+
     .navbar ul {
         display: none;
     }
@@ -474,7 +476,7 @@ section {
 
 .navbar-mobile a:hover,
 .navbar-mobile .active,
-.navbar-mobile li:hover > a {
+.navbar-mobile li:hover>a {
     color: #f0b245;
 }
 
@@ -505,21 +507,21 @@ section {
 
 .navbar-mobile .dropdown ul a:hover,
 .navbar-mobile .dropdown ul .active:hover,
-.navbar-mobile .dropdown ul li:hover > a {
+.navbar-mobile .dropdown ul li:hover>a {
     color: #f0b245;
 }
 
-.navbar-mobile .dropdown > .dropdown-active {
+.navbar-mobile .dropdown>.dropdown-active {
     display: block;
 }
 
 .navbar-mobile a:hover,
 .navbar-mobile .active,
-.navbar-mobile li:hover > a {
+.navbar-mobile li:hover>a {
     color: #1f8064;
 }
 
-.navbar-mobile .dropdown > .dropdown-active {
+.navbar-mobile .dropdown>.dropdown-active {
     display: block;
 }
 
@@ -649,7 +651,7 @@ section {
     border-radius: 10px 10px 0 0;
 }
 
-.controls-btns-jabar {
+.destinasi .controls-btns-jabar {
     position: absolute;
     top: 42%;
     cursor: pointer;
@@ -662,25 +664,25 @@ section {
     transition: all .3s;
 }
 
-.controls-btns-jabar:hover {
+.destinasi .controls-btns-jabar:hover {
     background-color: #ddd;
 }
 
-.controls-btns-jabar i {
+.destinasi .controls-btns-jabar i {
     font-size: 24px;
 }
 
-#prev-slide-jabar {
+.destinasi #prev-slide-jabar {
     left: 250px;
     /* margin-top: -10px; */
 }
 
-#next-slide-jabar {
+.destinasi #next-slide-jabar {
     right: 258px;
     /* margin-top: -10px; */
 }
 
-.controls-btns-jateng {
+.destinasi .controls-btns-jateng {
     position: absolute;
     top: 84%;
     cursor: pointer;
@@ -693,25 +695,25 @@ section {
     transition: all .3s;
 }
 
-.controls-btns-jateng:hover {
+.destinasi .controls-btns-jateng:hover {
     background-color: #ddd;
 }
 
-.controls-btns-jateng i {
+.destinasi .controls-btns-jateng i {
     font-size: 24px;
 }
 
-#prev-slide-jateng {
+.destinasi #prev-slide-jateng {
     left: 250px;
     /* margin-top: -10px; */
 }
 
-#next-slide-jateng {
+.destinasi #next-slide-jateng {
     right: 258px;
     /* margin-top: -10px; */
 }
 
-.controls-btns-jatim {
+.destinasi .controls-btns-jatim {
     position: absolute;
     top: 123%;
     cursor: pointer;
@@ -724,26 +726,52 @@ section {
     transition: all .3s;
 }
 
-.controls-btns-jatim:hover {
+.destinasi .controls-btns-jatim:hover {
     background-color: #ddd;
 }
 
-.controls-btns-jatim i {
+.destinasi .controls-btns-jatim i {
     font-size: 24px;
 }
 
-#prev-slide-jatim {
+.destinasi #prev-slide-jatim {
     left: 250px;
     /* margin-top: -10px; */
 }
 
-#next-slide-jatim {
+.destinasi #next-slide-jatim {
     right: 258px;
     /* margin-top: -10px; */
 }
 
 .detail-destinasi {
     height: 1000px;
+}
+
+@media (max-width: 1366px) {
+    .destinasi .controls-btns-jabar {
+        top: 52%;
+    }
+
+    .destinasi .controls-btns-jateng {
+        top: 102%;
+    }
+
+    .destinasi .controls-btns-jatim {
+        top: 151%;
+    }
+
+    .destinasi #prev-slide-jabar,
+    .destinasi #prev-slide-jateng,
+    .destinasi #prev-slide-jatim {
+        left: 50px;
+    }
+
+    .destinasi #next-slide-jabar,
+    .destinasi #next-slide-jateng,
+    .destinasi #next-slide-jatim {
+        right: 105px;
+    }
 }
 
 /*--------------------------------------------------------------
@@ -1026,7 +1054,7 @@ select:focus {
 /*--------------------------------------------------------------
 # Pagination
 --------------------------------------------------------------*/
-.pagination > li {
+.pagination>li {
     margin: 0 5px;
 }
 
@@ -1058,15 +1086,15 @@ select:focus {
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
-.pagination > li.active > a {
+.pagination>li.active>a {
     background-color: white;
     color: purple;
 }
 
-.pagination > li > a:focus,
-.pagination > li > a:hover,
-.pagination > li > span:focus,
-.pagination > li > span:hover {
+.pagination>li>a:focus,
+.pagination>li>a:hover,
+.pagination>li>span:focus,
+.pagination>li>span:hover {
     box-shadow: none !important;
     color: #289d7d;
 }
@@ -1078,9 +1106,9 @@ select:focus {
     cursor: context-menu;
 }
 
-.pagination > li.active > a:focus,
-.pagination > li.active > a:hover,
-.pagination > li.active > span:focus,
-.pagination > li.active > span:hover {
+.pagination>li.active>a:focus,
+.pagination>li.active>a:hover,
+.pagination>li.active>span:focus,
+.pagination>li.active>span:hover {
     color: white;
 }

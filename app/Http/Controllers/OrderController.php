@@ -226,7 +226,6 @@ class OrderController extends Controller
             $total = $subTotal * $duration;
         }
 
-
         $orderDate = date('Y-m-d H:i');
         $paymentDue = (new DateTime($orderDate))->modify('+1 day')->format('Y-m-d H:i:s');
 
