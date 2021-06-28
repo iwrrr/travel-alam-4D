@@ -1,5 +1,9 @@
 @extends('admin.layout')
 
+@section('title')
+  Dashboard - Lokasi
+@endsection
+
 @section('content')
     
   @php

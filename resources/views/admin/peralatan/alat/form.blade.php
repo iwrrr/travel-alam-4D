@@ -1,5 +1,9 @@
 @extends('admin.layout')
 
+@section('title')
+  Dashboard - Alat
+@endsection
+
 @section('content')
     
   @php
@@ -13,7 +17,7 @@
       <div class="col-lg-6">
         <div class="card card-default">
           <div class="card-header card-header-border-bottom">
-            <h2>{{ $formTitle }} Lokasi</h2>
+            <h2>{{ $formTitle }} Alat</h2>
           </div>
           <div class="card-body">
             @include('admin.partials.flash', ['$errors' => $errors])

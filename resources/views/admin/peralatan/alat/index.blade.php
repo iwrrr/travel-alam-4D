@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('title')
-    Dashboard - Alat
+  Dashboard - Alat
 @endsection
 
 @section('content')
