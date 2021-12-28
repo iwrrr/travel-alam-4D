@@ -9,9 +9,9 @@
           </div>
           <div class="col-md-6">
             <div class="social-links">
-              <a href="https://www.facebook.com/bemfasilkomusk" target="_blank" class="facebook"><i
+              <a href="#" class="facebook"><i
                   class="bi bi-facebook"></i></a>
-              <a href="https://www.instagram.com/bemfasilkomunsika/" target="_blank" class="instagram"><i
+              <a href="#" class="instagram"><i
                   class="bi bi-instagram bx bxl-instagram"></i></a>
             </div>
           </div>

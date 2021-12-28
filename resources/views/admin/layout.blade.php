@@ -14,6 +14,9 @@
 	<title>@yield('title')</title>
 
 	<link href="{{ asset('admin-kit/assets/css/app.css') }}" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+	
+	<link id="bsdp-css" rel="stylesheet" href="{{ asset('admin-kit/assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
 </head>
 
 <body>

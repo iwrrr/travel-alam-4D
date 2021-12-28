@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Tool;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
-use Session;
+use Cart;
 
 class CartController extends Controller
 {
@@ -16,12 +18,19 @@ class CartController extends Controller
      */
     public function index()
     {
-        $items = \Cart::getContent();
-        $this->data['items'] = $items;
+        if (Auth::check()) {
+            $userId = Auth::user()->id;
 
-        // dd($items);
+            $items = Cart::session($userId)->getContent();
+            $this->data['items'] = $items;
+            $this->data['userId'] = $userId;
 
-        return view('travel-alam.keranjang.index', $this->data);
+            return view('travel-alam.keranjang.index', $this->data);
+        }
+
+        Alert::info('Oops!', 'Kamu harus login terlebih dahulu!');
+
+        return redirect('/');
     }
 
     /**
@@ -32,23 +41,30 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        $params = $request->except('_token');
+        if (Auth::check()) {
+            $params = $request->except('_token');
+            $userId = Auth::user()->id;
 
-        $tool = Tool::findOrFail($params['tool_id']);
+            $tool = Tool::findOrFail($params['id_peralatan']);
 
-        $item = [
-            'id' => $tool->id,
-            'name' => $tool->alat,
-            'price' => $tool->harga,
-            'quantity' => $params['qty'],
-            'associatedModel' => $tool
-        ];
+            $item = [
+                'id' => $tool->id,
+                'name' => $tool->nama_peralatan,
+                'price' => $tool->harga_peralatan,
+                'quantity' => $params['jumlah'],
+                'associatedModel' => $tool
+            ];
 
-        \Cart::add($item);
+            Cart::session($userId)->add($item);
 
-        Session::flash('success', 'Berhasil ditambahkan ke keranjang');
+            Alert::success('Yay!', 'Berhasil ditambahkan ke keranjang!');
 
-        return redirect('peralatan-hiking');
+            return redirect('peralatan');
+        }
+
+        Alert::info('Oops!', 'Kamu harus login terlebih dahulu!');
+
+        return redirect('/');
     }
 
     /**
@@ -60,7 +76,29 @@ class CartController extends Controller
      */
     public function update(Request $request)
     {
-        //
+        if (Auth::check()) {
+            $params = $request->except('_token');
+            $userId = Auth::user()->id;
+
+            if ($items = $params['items']) {
+                foreach ($items as $cartID => $item) {
+                    Cart::session($userId)->update($cartID, [
+                        'quantity' => [
+                            'relative' => false,
+                            'value' => $item['jumlah']
+                        ]
+                    ]);
+                }
+                // Session::flash('success', 'Keranjang telah diperbarui');
+                Alert::success('Keranjang telah diperbarui!');
+
+                return redirect('keranjang');
+            }
+        }
+
+        Alert::info('Oops!', 'Kamu harus login terlebih dahulu!');
+
+        return redirect('/');
     }
 
     /**
@@ -71,8 +109,16 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        \Cart::remove($id);
+        if (Auth::check()) {
+            $userId = Auth::user()->id;
 
-        return redirect('keranjang');
+            Cart::session($userId)->remove($id);
+
+            return redirect('keranjang');
+        }
+
+        Alert::info('Oops!', 'Kamu harus login terlebih dahulu!');
+
+        return redirect('/');
     }
 }

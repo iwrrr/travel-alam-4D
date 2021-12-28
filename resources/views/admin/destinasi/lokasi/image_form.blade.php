@@ -1,5 +1,9 @@
 @extends('admin.layout')
 
+@section('title')
+  Dashboard - Gambar Lokasi
+@endsection
+
 @section('content')
 
 <div class="content">

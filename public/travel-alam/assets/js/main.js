@@ -195,11 +195,61 @@
 
 })();
 
-// Login Modal
+// Enable Button in Sign Up Modal
 
-$(document).ready(function() {
-  $('#loginModal').modal('show');
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  });
+$('#sk').click(function () {
+  if ($(this).is(':checked')) {
+    $('#signup').attr('disabled', false);
+  } else {
+    $('#signup').attr('disabled', true);
+  }
+});
+
+$(function () {
+  $('.owl-carousel').owlCarousel({
+    // loop:true,
+    margin:10,
+    // nav:true,
+    navText:["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+    responsive:{
+      0:{
+          items:1
+      },
+      600:{
+          items:3
+      },
+      1366:{
+          items:3
+      },
+      1920:{
+          items:4
+      }
+    }
+  })
+});
+
+// Custom button nav owl-carousel
+
+$('#next-slide-jabar').on('click', function () {
+  $('.jabar').trigger('next.owl.carousel');
+});
+
+$('#prev-slide-jabar').on('click', function () {
+  $('.jabar').trigger('prev.owl.carousel');
+});
+
+$('#next-slide-jateng').on('click', function () {
+  $('.jateng').trigger('next.owl.carousel');
+});
+
+$('#prev-slide-jateng').on('click', function () {
+  $('.jateng').trigger('prev.owl.carousel');
+});
+
+$('#next-slide-jatim').on('click', function () {
+  $('.jatim').trigger('next.owl.carousel');
+});
+
+$('#prev-slide-jatim').on('click', function () {
+  $('.jatim').trigger('prev.owl.carousel');
 });

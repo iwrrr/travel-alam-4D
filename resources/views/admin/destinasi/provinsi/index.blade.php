@@ -27,7 +27,7 @@
               @forelse ($provinces as $province)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
-                  <td>{{ $province->provinsi }}</td>
+                  <td>{{ $province->nama_provinsi }}</td>
                   <td>{{ $province->slug }}</td>
                   <td>
                     <a href="{{ url('admin/destinasi/provinsi/' . $province->id . '/edit') }}"> <i class="align-middle" data-feather="edit-2"></i></a>

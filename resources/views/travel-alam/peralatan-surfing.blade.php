@@ -9,19 +9,19 @@
   <section id="peralatan" class="peralatan surfing">
     <div class="container">
       <div class="row mb-5">
-          <div class="col-md">
-            <header class="section-header">
-              <p>Peralatan Surfing dan Snorkeling</p>
-            </header>
-          </div>
+        <div class="col-md">
+          <header class="section-header">
+            <p>Peralatan Surfing dan Snorkeling</p>
+          </header>
+        </div>
       </div>
 
       @foreach ($tools->chunk(20) as $chunk)
         <div class="row g-2">
-          @forelse ($tools as $tool)
+          @forelse ($chunk as $tool)
             @if ($tool->category->kategori == 'Surfing dan Snorkeling')
               <div class="col-md-6">
-                {!! Form::open(['url' => 'keranjang']) !!}
+                {!! Form::open(['url' => 'keranjang-surfing']) !!}
                 {!! Form::hidden('tool_id', $tool->id) !!}
                 <div class="card custom-card">
                   <div class="card-body">
@@ -31,7 +31,7 @@
                       </div>
                       <div class="col-md mt-2">
                         <span class="mx-2 prim-color"><strong>{{ $tool->alat }}</strong></span>
-                        <p class="mt-1" style="margin-left: 8px;">Rp {{ number_format($tool->harga) }}</p>
+                        <p class="mt-1" style="margin-left: 8px">Rp {{ number_format($tool->harga) }}</p>
                       </div>
                       <div class="col-md-2" style="margin-top: 18px">
                         <input type="number" name="qty" class="form-control" placeholder="1" min="1" value="1">
@@ -50,8 +50,9 @@
           @endforelse
         </div>
       @endforeach
+      
       <a href="/" class="btn btn-secondary mt-3 btn-custom">Kembali</a>
-      <a href="{{ url('keranjang') }}" class="btn btn-secondary mt-3 btn-custom btn-theme float-end">Keranjang</a>
+      <a href="{{ url('keranjang-surfing') }}" class="btn btn-secondary mt-3 btn-custom btn-theme float-end">Keranjang</a>
     </div>
   </section>
   <!-- End Peralatan Surfing Section -->

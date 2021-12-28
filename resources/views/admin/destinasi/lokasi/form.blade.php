@@ -1,5 +1,9 @@
 @extends('admin.layout')
 
+@section('title')
+  Dashboard - Lokasi
+@endsection
+
 @section('content')
     
   @php
@@ -24,28 +28,28 @@
             @endif
 
             <div class="form-group mb-3">
-              {!! Form::label('lokasi', 'Nama Lokasi Wisata', ['class' => 'mb-2']) !!}
-              {!! Form::text('lokasi', null, ['class' => 'form-control form-control-lg', 'placeholder' => 'Masukkan nama lokasi wisata']) !!}
+              {!! Form::label('nama_lokasi', 'Nama Lokasi Wisata', ['class' => 'mb-2']) !!}
+              {!! Form::text('nama_lokasi', null, ['class' => 'form-control form-control-lg', 'placeholder' => 'Masukkan nama lokasi wisata']) !!}
             </div>
 
             <div class="form-group mb-3">
-              {!! Form::label('wisata_id', 'Wisata', ['class' => 'mb-2']) !!}
-              {!! Form::select('wisata_id', $tours, null, ['class' => 'form-control', 'placeholder' => '- Pilih Wisata -']) !!}
+              {!! Form::label('id_provinsi', 'Provinsi', ['class' => 'mb-2']) !!}
+              {!! Form::select('id_provinsi', $provinces, null, ['class' => 'form-control', 'placeholder' => '- Pilih Provinsi -']) !!}
             </div>
 
             <div class="form-group mb-3">
-              {!! Form::label('provinsi_id', 'Provinsi', ['class' => 'mb-2']) !!}
-              {!! Form::select('provinsi_id', $provinces, null, ['class' => 'form-control', 'placeholder' => '- Pilih Provinsi -']) !!}
+              {!! Form::label('kabupaten', 'Kabupaten', ['class' => 'mb-2']) !!}
+              {!! Form::text('kabupaten', null, ['class' => 'form-control']) !!}
+            </div>
+
+            <div class="form-group mb-3">
+              {!! Form::label('map', 'Lokasi Google Maps', ['class' => 'mb-2']) !!}
+              {!! Form::text('map', null, ['class' => 'form-control']) !!}
             </div>
 
             <div class="form-group mb-3">
               {!! Form::label('deskripsi', 'Deskripsi', ['class' => 'mb-2']) !!}
               {!! Form::textarea('deskripsi', null, ['class' => 'form-control']) !!}
-            </div>
-
-            <div class="form-group mb-3">
-              {!! Form::label('jenis', 'Tipe Lokasi', ['class' => 'mb-2']) !!}
-              {!! Form::select('jenis', $types, null, ['class' => 'form-control', 'placeholder' => '- Pilih Tipe -']) !!}
             </div>
 
             <div class="form-group mb-3">

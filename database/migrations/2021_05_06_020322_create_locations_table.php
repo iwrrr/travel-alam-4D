@@ -15,19 +15,18 @@ class CreateLocationsTable extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->string('lokasi');
+            $table->string('nama_lokasi');
             $table->string('slug');
-            $table->unsignedBigInteger('wisata_id');
-            $table->unsignedBigInteger('provinsi_id');
+            $table->unsignedBigInteger('id_provinsi');
+            $table->string('kabupaten')->nullable();
+            $table->string('map')->nullable();
             $table->text('deskripsi')->nullable();
-            $table->string('jenis');
             $table->text('jalur_pendakian')->nullable();
             $table->text('rute_termudah')->nullable();
             $table->text('rute_normal')->nullable();
             $table->timestamps();
 
-            $table->foreign('wisata_id')->references('id')->on('tours')->onDelete('cascade');
-            $table->foreign('provinsi_id')->references('id')->on('provinces')->onDelete('cascade');
+            $table->foreign('id_provinsi')->references('id')->on('provinces')->onDelete('cascade');
         });
     }
 

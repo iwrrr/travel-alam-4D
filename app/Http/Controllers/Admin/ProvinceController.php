@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProvinceRequest;
 use App\Models\Province;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use Str;
 use Session;
 
@@ -19,6 +19,8 @@ class ProvinceController extends Controller
 
         $this->data['currentAdminMenu'] = 'destinasi';
         $this->data['currentAdminSubMenu'] = 'provinsi';
+
+        $this->middleware('auth');
     }
 
     /**
@@ -28,7 +30,7 @@ class ProvinceController extends Controller
      */
     public function index()
     {
-        $this->data['provinces'] = Province::orderBy('provinsi', 'ASC')->paginate(10);
+        $this->data['provinces'] = Province::orderBy('nama_provinsi', 'ASC')->paginate(10);
 
         return view('admin.destinasi.provinsi.index', $this->data);
     }
@@ -40,7 +42,7 @@ class ProvinceController extends Controller
      */
     public function create()
     {
-        $provinces = Province::orderBy('provinsi', 'ASC')->get();
+        $provinces = Province::orderBy('nama_provinsi', 'ASC')->get();
 
         $this->data['provinces'] = $provinces->toArray();
         $this->data['province'] = null;
@@ -57,7 +59,7 @@ class ProvinceController extends Controller
     public function store(ProvinceRequest $request)
     {
         $params = $request->except('_token');
-        $params['slug'] = Str::slug($params['provinsi']);
+        $params['slug'] = Str::slug($params['nama_provinsi']);
 
         if (Province::create($params)) {
             Session::flash('success', 'Provinsi telah ditambahkan');
@@ -102,7 +104,7 @@ class ProvinceController extends Controller
     public function update(ProvinceRequest $request, $id)
     {
         $params = $request->except('_token');
-        $params['slug'] = Str::slug($params['provinsi']);
+        $params['slug'] = Str::slug($params['nama_provinsi']);
 
         $province = Province::findOrFail($id);
 

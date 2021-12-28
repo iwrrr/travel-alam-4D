@@ -1,5 +1,9 @@
 @extends('admin.layout')
 
+@section('title')
+  Dashboard - Gambar Alat
+@endsection
+
 @section('content')
 
 <div class="content">
@@ -14,7 +18,7 @@
           @include('admin.partials.flash', ['$errors' => $errors])
           {!! Form::open(['url' => ['admin/peralatan/alat/gambar', $tool->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
           <div class="form-group">
-            {!! Form::label('image', 'Gambar Lokasi') !!}<br>
+            {!! Form::label('image', 'Gambar Alat') !!}<br>
             {!! Form::file('image', ['class' => 'form-control-file mt-2']) !!}
           </div>
           <div class="form-footer mt-5">

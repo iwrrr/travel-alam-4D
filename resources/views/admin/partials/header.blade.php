@@ -152,7 +152,7 @@
         </a>
 
         <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
-          <span class="text-dark">Halo, {{ Auth::user()->name }}</span>
+          <span class="text-dark">Halo, {{ Auth::user()->nama_depan }} {{ Auth::user()->nama_belakang }}</span>
         </a>
         <div class="dropdown-menu dropdown-menu-right">
           <a class="dropdown-item" href="pages-profile.html"><i class="align-middle mr-1" data-feather="user"></i> Profile</a>

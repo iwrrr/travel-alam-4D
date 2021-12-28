@@ -14,7 +14,7 @@ class HikingController extends Controller
      */
     public function index()
     {
-        $tools = Tool::all();
+        $tools = Tool::orderBy('nama_peralatan', 'ASC')->paginate(20);
 
         $this->data['tools'] = $tools;
         $this->data['toolImages'] = $tools;

@@ -24,42 +24,37 @@ class LocationRequest extends FormRequest
     public function rules()
     {
         $id = (int) $this->get('id');
-        $wisata_id = (int) $this->get('wisata_id');
-        $provinsi_id = (int) $this->get('provinsi_id');
+        $id_provinsi = (int) $this->get('id_provinsi');
+        $kabupaten = '';
+        $map = '';
         $deskripsi = '';
-        $jenis = '';
         $jalur_pendakian = '';
         $rute_termudah = '';
         $rute_normal = '';
 
         if ($this->method() == 'PUT') {
-            $lokasi = 'required|unique:locations,lokasi,' . $id;
+            $nama_lokasi = 'required|unique:locations,nama_lokasi,' . $id;
             $slug = 'unique:locations,slug,' . $id;
-            $wisata = 'required:locations,wisata_id,' . $wisata_id;
-            $provinsi = 'required:locations,provinsi_id,' . $provinsi_id;
+            $provinsi = 'required:locations,id_provinsi,' . $id_provinsi;
+            $kabupaten = 'required';
+            $map = 'required';
             $deskripsi = 'required';
-            $jenis = 'required';
-
-            if ($this->get('jenis') == 'pegunungan') {
-                $jalur_pendakian = '|required';
-                $rute_termudah = '|required';
-                $rute_normal = '|required';
-            }
+            $jalur_pendakian = '|required';
+            $rute_termudah = '|required';
+            $rute_normal = '|required';
         } else {
-            $lokasi = 'required|unique:locations,lokasi';
+            $nama_lokasi = 'required|unique:locations,nama_lokasi';
             $slug = 'unique:locations,slug';
-            $wisata = 'required:locations,wisata_id';
-            $provinsi = 'required:locations,provinsi_id';
-            $jenis = 'required';
+            $provinsi = 'required:locations,id_provinsi';
         }
 
         return [
-            'lokasi' => $lokasi,
+            'nama_lokasi' => $nama_lokasi,
             'slug' => $slug,
-            'wisata_id' => $wisata,
-            'provinsi_id' => $provinsi,
+            'id_provinsi' => $provinsi,
+            'kabupaten' => $kabupaten,
+            'map' => $map,
             'deskripsi' => $deskripsi,
-            'jenis' => $jenis,
             'jalur_pendakian' => $jalur_pendakian,
             'rute_termudah' => $rute_termudah,
             'rute_normal' => $rute_normal,

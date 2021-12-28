@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ToolImageRequest;
 use App\Http\Requests\ToolRequest;
-use App\Models\Category;
 use App\Models\Tool;
 use App\Models\ToolImage;
 use Illuminate\Http\Request;
@@ -22,6 +21,8 @@ class ToolController extends Controller
 
         $this->data['currentAdminMenu'] = 'peralatan';
         $this->data['currentAdminSubMenu'] = 'alat';
+
+        $this->middleware('auth');
     }
 
     /**
@@ -31,7 +32,7 @@ class ToolController extends Controller
      */
     public function index()
     {
-        $this->data['tools'] = Tool::all();
+        $this->data['tools'] = Tool::orderBy('nama_peralatan', 'ASC')->paginate(10);
 
         return view('admin.peralatan.alat.index', $this->data);
     }
@@ -44,11 +45,9 @@ class ToolController extends Controller
     public function create()
     {
         $tools = Tool::all();
-        $categories = Category::pluck('kategori', 'id');
 
         $this->data['tools'] = $tools;
         $this->data['toolID'] = 0;
-        $this->data['categories'] = $categories;
 
         return view('admin.peralatan.alat.form', $this->data);
     }
@@ -62,10 +61,10 @@ class ToolController extends Controller
     public function store(ToolRequest $request)
     {
         $params = $request->except('_token');
-        $params['slug'] = Str::slug($params['alat']);
+        $params['slug'] = Str::slug($params['nama_peralatan']);
 
         if (Tool::create($params)) {
-            Session::flash('success', 'Alat telah ditambahkan');
+            Session::flash('success', 'Peralatan telah ditambahkan');
         }
 
         return redirect('admin/peralatan/alat');
@@ -91,11 +90,9 @@ class ToolController extends Controller
     public function edit($id)
     {
         $tool = Tool::findOrFail($id);
-        $categories = Category::pluck('kategori', 'id');
 
         $this->data['tool'] = $tool;
         $this->data['toolID'] = $tool->id;
-        $this->data['categories'] = $categories;
 
         return view('admin.peralatan.alat.form', $this->data);
     }
@@ -110,7 +107,7 @@ class ToolController extends Controller
     public function update(ToolRequest $request, $id)
     {
         $params = $request->except('_token');
-        $params['slug'] = Str::slug($params['alat']);
+        $params['slug'] = Str::slug($params['nama_peralatan']);
 
         $tool = Tool::findOrFail($id);
 
@@ -171,7 +168,7 @@ class ToolController extends Controller
             $filePath = $image->storeAs($folder, $fileName, 'public');
 
             $params = [
-                'tool_id' => $tool->id,
+                'id_peralatan' => $tool->id,
                 'path' => $filePath,
             ];
 
@@ -187,7 +184,7 @@ class ToolController extends Controller
 
     public function remove_image($id)
     {
-        $image = toolImage::findOrFail($id);
+        $image = ToolImage::findOrFail($id);
 
         if ($image->delete()) {
             Session::flash('success', 'Gambar telah dihapus');

@@ -10,12 +10,12 @@ class ToolImage extends Model
     use HasFactory;
 
     protected $fillable = [
-        'tool_id',
+        'id_peralatan',
         'path',
     ];
 
     public function tool()
     {
-        return $this->belongsTo(Tool::class);
+        return $this->belongsTo(Tool::class, 'id_peralatan');
     }
 }
