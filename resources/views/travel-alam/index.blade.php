@@ -11,7 +11,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center">
-          <img src="{{ asset('travel-alam/assets/img/Travel Alam Logo.png') }}" alt="" data-aos="zoom-out" data-aos-delay="200" width="80%">
+          <img src="{{ asset('travel-alam/assets/img/Travel Alam Logo new.png') }}" alt="" data-aos="zoom-out" data-aos-delay="200" width="80%">
         </div>
         <div class="col-lg-6" data-aos="zoom-out" data-aos-delay="200">
           <div class="row">
